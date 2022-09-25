@@ -112,8 +112,14 @@ function GameView() {
         const currUserShape = levelArray[id].userShape;
         const currUserProps = Object.keys(currUserShape);
         console.log(currUserProps)
+        dispatch({type:ACTIONS.CHANGE_PROPERTY_INDEX,payload:{propertyIndex:0 }})
         setPropertiesArray(currUserProps)
     }, [id])
+   
+
+
+
+
     return (
         <>
             <_SC_flexColumn isCentered={true}>
@@ -123,11 +129,11 @@ function GameView() {
                 <ShapeContainer />
                 <br />
                 <_SC_flexRow justifyContent='center' alignItems='center'>
-                    <TriangleButton deg={degObj.LEFT} onClick={() => dispatch({type:ACTIONS.CHANGE_LEVEL_INDEX,payload:{amount:-1}})} />
+                    <TriangleButton deg={degObj.LEFT} onClick={() => dispatch({type:ACTIONS.CHANGE_PROPERTY_INDEX,payload:{amount:-1}})} />
                     <PropertyContainer><PropertyName>{propertiesArray[propertyIndex]}</PropertyName>
                         <PropertyValue>{levelArray[id].userShape[propertiesArray[propertyIndex]]}</PropertyValue>
                     </PropertyContainer>
-                    <TriangleButton deg={degObj.RIGHT} onClick={() => dispatch({type:ACTIONS.CHANGE_LEVEL_INDEX,payload:{amount:1}})} />
+                    <TriangleButton deg={degObj.RIGHT} onClick={() => dispatch({type:ACTIONS.CHANGE_PROPERTY_INDEX,payload:{amount:1}})} />
 
                 </_SC_flexRow>
                 <_SC_flexRow justifyContent='space-between' alignItems='center'>

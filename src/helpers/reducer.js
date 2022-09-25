@@ -2,23 +2,28 @@ import INIT_STATE from "../constants/INIT_STATE";
 import ACTIONS from "../constants/ACTIONS";
 import PIXEL_AMOUNT from "../constants/PIXEL_AMOUNT";
 
+
 function reducer(state, payload) {
     const newState = { ...state }
-    const { type, amount, propertyIndex } = payload
+    const { type, amount } = payload
     switch (type) {
         case ACTIONS.INC: {
-            newState.levelArray[newState.levelIndex].userShape[newState.currProperty] += PIXEL_AMOUNT
+            console.log(newState)
+            const propertyKey = Object.keys(newState.levelArray[newState.levelIndex].userShape[newState.propertyIndex])[0]
+             newState.levelArray[newState.levelIndex].userShape[newState.propertyIndex][propertyKey] += PIXEL_AMOUNT
+             console.log(newState)
             return newState
         }
         case ACTIONS.DEC: {
-            newState.levelArray[newState.levelIndex].userShape[newState.currProperty] -= PIXEL_AMOUNT
+           const propertyKey = Object.keys(newState.levelArray[newState.levelIndex].userShape[newState.propertyIndex])[0]
+             newState.levelArray[newState.levelIndex].userShape[newState.propertyIndex][propertyKey] -= PIXEL_AMOUNT
             return newState
 
         }
-        case ACTIONS.CHANGE_CURR_PROPERTY: {
-            const propertiesArray = Object.keys(newState.levelArray[newState.levelIndex].userShape)
-            newState.currProperty = propertiesArray[propertyIndex]
-
+        case ACTIONS.CHANGE_PROPERTY_INDEX: {
+            
+            newState.propertyIndex += amount
+            console.log(amount)
 
             return newState
         }
