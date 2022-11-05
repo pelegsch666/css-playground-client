@@ -1,13 +1,14 @@
 import WelcomeView from "./views/WelcomeView";
 import { createGlobalStyle } from "styled-components";
-
-import { useReducer } from "react";
+import { objMockData } from "./mockData";
+import { useEffect, useReducer } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import GameView from "./views/GameView";
-
+import {RecoilRoot, useSetRecoilState} from "recoil";
 import StateContext from "./contexts/StateContext";
 import reducer from "./helpers/reducer";
 import INIT_STATE from "./constants/INIT_STATE";
+import { levelsDataState } from "./recoil/globalStates";
 
 //const socket = io('http://localhost:5050');
 
@@ -20,11 +21,19 @@ body{
 
 function App() {
   const [state, dispatch] = useReducer(reducer,INIT_STATE )
-
+  const setLevelsData =  useSetRecoilState(levelsDataState); 
+  
+  useEffect(() =>{
+    setLevelsData(objMockData)
+  },[])
+  
+  
+  
   return (
     <>
      
      <BrowserRouter>
+     
      <StateContext.Provider value={{state,dispatch}}>
         
         
@@ -40,6 +49,7 @@ function App() {
 
 
         </StateContext.Provider>
+      
       </BrowserRouter>
 
 
