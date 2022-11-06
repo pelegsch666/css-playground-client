@@ -69,6 +69,7 @@ Levels ideas for the future:
 - Add audio FX
 - Add music to the levels
 - Improve the UI styles
+- Add a "time" mode
 
 ---
 
