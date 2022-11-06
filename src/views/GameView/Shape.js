@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 function getTheStyles(shapeProperties, defaultProperties) {
     let shapeStyles = {}
@@ -6,7 +6,6 @@ function getTheStyles(shapeProperties, defaultProperties) {
         shapeStyles = { ...shapeStyles, ...prop }
     }
     const allProperties = { ...shapeStyles, ...defaultProperties }
-    console.log(allProperties)
     return allProperties;
 }
 
@@ -14,12 +13,10 @@ function getTheStyles(shapeProperties, defaultProperties) {
 
 
 function Shape({ shapeProperties, defaultProperties, renderingKey }) {
-    console.log(defaultProperties)
     const [styles, setStyles] = useState({})
     useEffect(() => {
         setStyles(getTheStyles(shapeProperties, defaultProperties))
     }, [shapeProperties, defaultProperties])
-      console.log(styles)
     switch (renderingKey) {
         case 'Flex': {
             return (<div style={styles}>

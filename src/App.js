@@ -1,14 +1,12 @@
-import WelcomeView from "./views/WelcomeView";
-import { createGlobalStyle } from "styled-components";
-import { objMockData } from "./mockData";
-import { useEffect, useReducer } from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import GameView from "./views/GameView";
-import {RecoilRoot, useSetRecoilState} from "recoil";
-import StateContext from "./contexts/StateContext";
-import reducer from "./helpers/reducer";
-import INIT_STATE from "./constants/INIT_STATE";
-import { levelsDataState } from "./recoil/globalStates";
+import { useEffect, useReducer } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RecoilRoot, useSetRecoilState } from 'recoil';
+import { createGlobalStyle } from 'styled-components';
+import StateContext from './contexts/StateContext';
+import { objMockData } from './mockData';
+import { levelsDataState } from './recoil/globalStates';
+import GameView from './views/GameView';
+import WelcomeView from './views/WelcomeView';
 
 //const socket = io('http://localhost:5050');
 
@@ -17,44 +15,31 @@ html{ height: 100vh}
 body{
  background: linear-gradient(172.94deg, #16003B 20.22%, #003B11 94.49%);
  color: white;}
-`
+`;
 
 function App() {
-  const [state, dispatch] = useReducer(reducer,INIT_STATE )
-  const setLevelsData =  useSetRecoilState(levelsDataState); 
-  
-  useEffect(() =>{
-    setLevelsData(objMockData)
-  },[])
-  
-  
-  
-  return (
-    <>
-     
-     <BrowserRouter>
-     
-     <StateContext.Provider value={{state,dispatch}}>
-        
-        
-          <GlobalStyle />
+	const setLevelsData = useSetRecoilState(levelsDataState);
 
-          <Routes>
+	useEffect(() => {
+		setLevelsData(objMockData);
+	}, [setLevelsData]);
 
-            <Route path="/" element={<WelcomeView />} />
-            <Route path="GameView/:id" element={<GameView />} />
+	useEffect(() => {
+		// TODO: on refresh, move to the welcome page
+	});
 
+	return (
+		<>
+			<BrowserRouter>
+				<GlobalStyle />
 
-          </Routes>
-
-
-        </StateContext.Provider>
-      
-      </BrowserRouter>
-
-
-    </>
-  );
+				<Routes>
+					<Route path="/" element={<WelcomeView />} />
+					<Route path="GameView/:id" element={<GameView />} />
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
 }
 
 export default App;
