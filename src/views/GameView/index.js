@@ -72,7 +72,6 @@ function GameView() {
 	}
 	function changeUserValues(sign) {
 		const newUserShape = [...userShape];
-		console.log(newUserShape);
 		if (typeof newUserShape[currUserShapeIdx][propertyTitle] === 'number') {
 			if (sign === '+') {
 				newUserShape[currUserShapeIdx][propertyTitle] += PIXEL_AMOUNT;
@@ -109,12 +108,9 @@ function GameView() {
 		setUserShape(newUserShape);
 	}
 	function checkVictory(userShape, targetShape) {
-		console.log('userShape', userShape);
-		console.log('targetShape', targetShape);
 		let flag = true;
 		for (let i = 0; i < userShape.length; i++) {
 			const keyName = Object.keys(userShape[i])[0];
-			console.log(keyName);
 			if (userShape[i][keyName] !== targetShape[i][keyName]) {
 				flag = false;
 				return flag;
@@ -125,7 +121,6 @@ function GameView() {
 	}
 
 	function changeIndexOfLevel() {
-		console.log(currIdxLevel);
 		setCurrIdxLevel(currIdxLevel + 1);
 	}
 

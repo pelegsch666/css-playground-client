@@ -32,7 +32,6 @@ export default function WelcomeView() {
 
 	function handleRoomID(roomId) {
 		setRoomId(roomId);
-		console.log(roomId);
 	}
 
 	function getNewIndex(array, currIndex, incrementSize) {
