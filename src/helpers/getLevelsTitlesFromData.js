@@ -1,6 +1,5 @@
-
-export function getLevelsTitlesFromData(levelData){
-  /*[{
+export function getLevelsTitlesFromData(levelData) {
+	/*[{
     levelName: 'shape it out',
     levelId: 1,
     targetProperties: [
@@ -12,7 +11,7 @@ export function getLevelsTitlesFromData(levelData){
         { height: getRandomIntWithGap(100, 150, PIXEL_AMOUNT) },
         { borderRadius: getRandomIntWithGap(5, 25, PIXEL_AMOUNT) }
     ]*/
-    const levelTitleArr = []
-    levelData.forEach(item => levelTitleArr.push(item.levelName) )
-    return levelTitleArr
+	const levelTitleArr = [];
+	levelData.forEach((item) => levelTitleArr.push(item.levelName));
+	return levelTitleArr;
 }

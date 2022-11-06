@@ -1,25 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+
 import { _SC_flexColumn, _SC_flexRow } from '../../components/_SC/layoutUtil';
+import PIXEL_AMOUNT from '../../constants/PIXEL_AMOUNT';
+import propertiesValueStrings from '../../constants/propertiesValueStrings';
 import degObj from '../../helpers/degObj';
-import { useEffect, useState, useReducer, useContext } from 'react';
-import ACTIONS from '../../constants/ACTIONS';
-import StateContext from '../../contexts/StateContext';
-import Line from './Line';
+import {
+	currIndexLevelState,
+	levelsDataState,
+} from '../../recoil/globalStates';
 import CircleButton from './CircleButton';
+import Line from './Line';
 import PropertyContainer from './PropertyContainer';
 import PropertyName from './PropertyName';
 import PropertyValue from './PropertyValue';
+import Shape from './Shape';
 import ShapeContainer from './ShapeContainer';
 import TriangleButton from './TriangleButton';
-import {
-	levelsDataState,
-	currIndexLevelState,
-} from '../../recoil/globalStates';
-import { useRecoilValue, useRecoilState } from 'recoil';
-import Shape from './Shape';
-import PIXEL_AMOUNT from '../../constants/PIXEL_AMOUNT';
 import Victory from './Victory';
-import propertiesValueStrings from '../../constants/propertiesValueStrings';
 
 function GameView() {
 	const { id } = useParams();

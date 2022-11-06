@@ -1,8 +1,7 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { RecoilRoot, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { createGlobalStyle } from 'styled-components';
-import StateContext from './contexts/StateContext';
 import { objMockData } from './mockData';
 import { levelsDataState } from './recoil/globalStates';
 import GameView from './views/GameView';

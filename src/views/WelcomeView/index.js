@@ -5,8 +5,8 @@ import { _SC_flexColumn } from '../../components/_SC/layoutUtil';
 import degObj from '../../helpers/degObj';
 import { getLevelsTitlesFromData } from '../../helpers/getLevelsTitlesFromData';
 import {
-    currIndexLevelState,
-    levelsDataState
+	currIndexLevelState,
+	levelsDataState,
 } from '../../recoil/globalStates';
 import LevelLabel from './LevelLabel';
 import LevelsDiv from './LevelsDiv';
@@ -22,9 +22,9 @@ export default function WelcomeView() {
 	const levelsData = useRecoilValue(levelsDataState);
 	const [titles, setTitles] = useState([]);
 	const [playerName, setPlayerName] = useState('');
-	const [roomId, setRoomId] = useState('');
+	const setRoomId = useState('')[1];
 	const navigate = useNavigate();
-	const [isCreateOn, setIsCreateOn] = useState(true);
+	const isCreateOn = useState(true)[0];
 
 	useEffect(() => {
 		setTitles(getLevelsTitlesFromData(levelsData));
