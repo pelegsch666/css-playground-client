@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 const LevelLabel = styled.li`
 	font-family: 'Phosphate';
 	font-style: normal;
@@ -10,4 +11,5 @@ const LevelLabel = styled.li`
 	cursor: pointer;
 	background-color: ${(props) => (props.isCurrLvl ? '#F73D93' : 'none')};
 `;
+
 export default LevelLabel;

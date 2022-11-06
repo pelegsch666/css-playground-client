@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { _SC_flexColumn, _SC_flexRow } from '../../components/_SC/layoutUtil';
-import PIXEL_AMOUNT from '../../constants/PIXEL_AMOUNT';
-import propertiesValueStrings from '../../constants/propertiesValueStrings';
-import degObj from '../../helpers/degObj';
-import {
-	currIndexLevelState,
-	levelsDataState,
-} from '../../recoil/globalStates';
+import PIXEL_AMOUNT from 'constants/PIXEL_AMOUNT';
+import propertiesValueStrings from 'constants/propertiesValueStrings';
+
+import degObj from 'helpers/degObj';
+
+import { _SC_flexColumn, _SC_flexRow } from 'components/_SC/layoutUtil';
+import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
 import CircleButton from './CircleButton';
 import Line from './Line';
 import PropertyContainer from './PropertyContainer';

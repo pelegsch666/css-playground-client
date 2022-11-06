@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { _SC_flexColumn } from '../../components/_SC/layoutUtil';
-import degObj from '../../helpers/degObj';
-import { getLevelsTitlesFromData } from '../../helpers/getLevelsTitlesFromData';
-import {
-	currIndexLevelState,
-	levelsDataState,
-} from '../../recoil/globalStates';
+
+import degObj from 'helpers/degObj';
+import { getLevelsTitlesFromData } from 'helpers/getLevelsTitlesFromData';
+
+import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
+
+import { _SC_flexColumn } from 'components/_SC/layoutUtil';
 import LevelLabel from './LevelLabel';
 import LevelsDiv from './LevelsDiv';
 import PlayButton from './PlayButton';
