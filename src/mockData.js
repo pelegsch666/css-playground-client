@@ -81,26 +81,26 @@ export const objMockData = [
 		}},{
 			levelName: 'Box Model-Margin',
 			levelId: 4,
-			renderingKey: 'Box Model',
+			renderingKey: 'Margin',
 			defaultProperties: {
 				display: 'flex',
-				width: 200,
-				height: 200,
+				width: 80,
+				height: 80,
 				backgroundColor: '#aaffaa',
 				justifyContent: 'center',
 				alignItems: 'center'
 			},
 			targetProperties: {
-				marginRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+				marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT)
 			},
 			userProperties: {
-				marginRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-				marginBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+				marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+				marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT)
 			}
 	}
 ];

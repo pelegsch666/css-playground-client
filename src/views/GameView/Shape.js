@@ -30,12 +30,32 @@ function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 				</div>
 			);
 		}
-		case 'Box Model':{
-			return(
-			<div style={styles} >
-               <div style={{width: '100%', height: '100%',backgroundColor: 'navy'}}></div>
+		case 'Box Model': {
+			return (
+				<div style={styles} >
+					<div style={{ width: '100%', height: '100%', backgroundColor: 'navy' }}></div>
 
-			</div>)
+				</div>)
+		}
+		case 'Margin': {
+			return (
+				<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
+					<div style={{ display: 'flex', justifyContent: 'center' }}>
+						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+					</div>
+					<div style={{ display: 'flex',justifyContent: 'center' }}>
+						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+						<div style={styles}></div>
+						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+					</div>
+					<div style={{ display: 'flex', justifyContent: 'center' }}>
+						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+					</div>
+
+
+				</div>
+
+			)
 		}
 		default: {
 			return <div style={styles}></div>;
