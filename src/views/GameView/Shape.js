@@ -12,6 +12,8 @@ function getTheStyles(shapeProperties, defaultProperties) {
 function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 	const [styles, setStyles] = useState({});
 	useEffect(() => {
+		console.log('shapeProperties', shapeProperties);
+		console.log('defaultProperties', defaultProperties);
 		setStyles(getTheStyles(shapeProperties, defaultProperties));
 	}, [shapeProperties, defaultProperties]);
 	switch (renderingKey) {
@@ -32,30 +34,72 @@ function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 		}
 		case 'Box Model': {
 			return (
-				<div style={styles} >
-					<div style={{ width: '100%', height: '100%', backgroundColor: 'navy' }}></div>
-
-				</div>)
+				<div style={styles}>
+					<div
+						style={{ width: '100%', height: '100%', backgroundColor: 'navy' }}
+					></div>
+				</div>
+			);
 		}
 		case 'Margin': {
 			return (
-				<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'center',
+					}}
+				>
 					<div style={{ display: 'flex', justifyContent: 'center' }}>
-						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+						<div
+							style={{
+								width: '50px',
+								height: '50px',
+								backgroundColor: 'salmon',
+							}}
+						></div>
 					</div>
-					<div style={{ display: 'flex',justifyContent: 'center' }}>
-						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+					<div style={{ display: 'flex', justifyContent: 'center' }}>
+						<div
+							style={{
+								width: '50px',
+								height: '50px',
+								backgroundColor: 'salmon',
+							}}
+						></div>
 						<div style={styles}></div>
-						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+						<div
+							style={{
+								width: '50px',
+								height: '50px',
+								backgroundColor: 'salmon',
+							}}
+						></div>
 					</div>
 					<div style={{ display: 'flex', justifyContent: 'center' }}>
-						<div style={{ width: '50px', height: '50px', backgroundColor: 'salmon' }}></div>
+						<div
+							style={{
+								width: '50px',
+								height: '50px',
+								backgroundColor: 'salmon',
+							}}
+						></div>
 					</div>
-
-
 				</div>
-
-			)
+			);
+		}
+		case 'Rgb': {
+			const { red: r, green: g, blue: b, width, height, border } = styles;
+			return (
+				<div
+					style={{
+						width,
+						height,
+						border,
+						backgroundColor: `rgb(${r}, ${g}, ${b})`,
+					}}
+				></div>
+			);
 		}
 		default: {
 			return <div style={styles}></div>;

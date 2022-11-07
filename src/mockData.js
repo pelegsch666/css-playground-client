@@ -55,7 +55,8 @@ export const objMockData = [
 				propertiesValueStrings.flexDirection
 			),
 		},
-	}, {
+	},
+	{
 		levelName: 'Box Model',
 		levelId: 3,
 		renderingKey: 'Box Model',
@@ -65,42 +66,68 @@ export const objMockData = [
 			height: 200,
 			backgroundColor: '#aaffaa',
 			justifyContent: 'center',
-			alignItems: 'center'
+			alignItems: 'center',
 		},
 		targetProperties: {
 			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 		},
 		userProperties: {
 			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
-		}},{
-			levelName: 'Box Model-Margin',
-			levelId: 4,
-			renderingKey: 'Margin',
-			defaultProperties: {
-				display: 'flex',
-				width: 80,
-				height: 80,
-				backgroundColor: '#aaffaa',
-				justifyContent: 'center',
-				alignItems: 'center'
+			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+		},
+	},
+	{
+		levelName: 'Box Model-Margin',
+		levelId: 4,
+		renderingKey: 'Margin',
+		defaultProperties: {
+			display: 'flex',
+			width: 80,
+			height: 80,
+			backgroundColor: '#aaffaa',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		targetProperties: {
+			marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+		},
+		userProperties: {
+			marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+			marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
+		},
+	},
+	{
+		levelName: 'Red, Green and Blue',
+		levelId: 5,
+		renderingKey: 'Rgb',
+		defaultProperties: {
+			width: 200,
+			height: 200,
+			border: '10px solid black',
+		},
+		targetProperties: {
+			customProperties: {
+				red: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
+				green: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
+				blue: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
 			},
-			targetProperties: {
-				marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT)
+		},
+		userProperties: {
+			customProperties: {
+				red: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
+				green: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
+				blue: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
 			},
-			userProperties: {
-				marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-				marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT)
-			}
-	}
+		},
+	},
 ];

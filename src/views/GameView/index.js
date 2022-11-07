@@ -33,8 +33,17 @@ function GameView() {
 	useEffect(() => {
 		const userProperties = levelsData[currIdxLevel]?.userProperties;
 		const userPropertiesArr = [];
+
 		for (const property in userProperties) {
-			userPropertiesArr.push({ [property]: userProperties[property] });
+			if (property === 'customProperties') {
+				for (const customProperty in userProperties[property]) {
+					userPropertiesArr.push({
+						[customProperty]: userProperties[property][customProperty],
+					});
+				}
+			} else {
+				userPropertiesArr.push({ [property]: userProperties[property] });
+			}
 		}
 		setUserShape(userPropertiesArr);
 	}, [levelsData, currIdxLevel]);
@@ -43,8 +52,17 @@ function GameView() {
 		const targetProperties = levelsData[currIdxLevel]?.targetProperties;
 		const targetPropertiesArr = [];
 		for (const property in targetProperties) {
-			targetPropertiesArr.push({ [property]: targetProperties[property] });
+			if (property === 'customProperties') {
+				for (const customProperty in targetProperties[property]) {
+					targetPropertiesArr.push({
+						[customProperty]: targetProperties[property][customProperty],
+					});
+				}
+			} else {
+				targetPropertiesArr.push({ [property]: targetProperties[property] });
+			}
 		}
+
 		setTargetShape(targetPropertiesArr);
 	}, [levelsData, currIdxLevel]);
 
