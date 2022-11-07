@@ -30,6 +30,13 @@ function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 				</div>
 			);
 		}
+		case 'Box Model':{
+			return(
+			<div style={styles} >
+               <div style={{width: '100%', height: '100%',backgroundColor: 'navy'}}></div>
+
+			</div>)
+		}
 		default: {
 			return <div style={styles}></div>;
 		}

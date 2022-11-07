@@ -55,5 +55,29 @@ export const objMockData = [
 				propertiesValueStrings.flexDirection
 			),
 		},
-	},
+	}, {
+		levelName: 'Box Model',
+		levelId: 3,
+		renderingKey: 'Box Model',
+		defaultProperties: {
+			display: 'flex',
+			width: 200,
+			height: 200,
+			backgroundColor: '#aaffaa',
+			justifyContent: 'center',
+			alignItems: 'center'
+		},
+		targetProperties: {
+			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+		},
+		userProperties: {
+			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+		},
+	}
 ];
