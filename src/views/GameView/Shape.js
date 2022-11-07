@@ -12,8 +12,6 @@ function getTheStyles(shapeProperties, defaultProperties) {
 function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 	const [styles, setStyles] = useState({});
 	useEffect(() => {
-		console.log('shapeProperties', shapeProperties);
-		console.log('defaultProperties', defaultProperties);
 		setStyles(getTheStyles(shapeProperties, defaultProperties));
 	}, [shapeProperties, defaultProperties]);
 	switch (renderingKey) {

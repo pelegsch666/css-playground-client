@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import PIXEL_AMOUNT from 'constants/PIXEL_AMOUNT';
@@ -7,8 +7,9 @@ import propertiesValueStrings from 'constants/propertiesValueStrings';
 
 import degObj from 'helpers/degObj';
 
-import { _SC_flexColumn, _SC_flexRow } from 'components/_SC/layoutUtil';
 import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
+
+import { _SC_flexColumn, _SC_flexRow } from 'components/_SC/layoutUtil';
 import CircleButton from './CircleButton';
 import Line from './Line';
 import PropertyContainer from './PropertyContainer';
@@ -30,6 +31,8 @@ function GameView() {
 	const [currUserShapeIdx, setUserShapeIdx] = useState(0);
 	const [isVictory, setIsVictory] = useState(false);
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		const userProperties = levelsData[currIdxLevel]?.userProperties;
 		const userPropertiesArr = [];
@@ -47,6 +50,10 @@ function GameView() {
 		}
 		setUserShape(userPropertiesArr);
 	}, [levelsData, currIdxLevel]);
+
+	useEffect(() => {
+		setCurrIdxLevel(id);
+	}, [id, setCurrIdxLevel]);
 
 	useEffect(() => {
 		const targetProperties = levelsData[currIdxLevel]?.targetProperties;
@@ -138,7 +145,8 @@ function GameView() {
 	}
 
 	function changeIndexOfLevel() {
-		setCurrIdxLevel(currIdxLevel + 1);
+		setCurrIdxLevel(+currIdxLevel + 1);
+		navigate(`/GameView/${+currIdxLevel + 1}`);
 	}
 
 	return (
