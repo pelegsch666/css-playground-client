@@ -78,6 +78,29 @@ export const objMockData = [
 			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
 			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
-		},
+		}},{
+			levelName: 'Box Model-Margin',
+			levelId: 4,
+			renderingKey: 'Box Model',
+			defaultProperties: {
+				display: 'flex',
+				width: 200,
+				height: 200,
+				backgroundColor: '#aaffaa',
+				justifyContent: 'center',
+				alignItems: 'center'
+			},
+			targetProperties: {
+				marginRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+			},
+			userProperties: {
+				marginRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
+				marginBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT)
+			}
 	}
 ];
