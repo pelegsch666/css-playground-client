@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import PIXEL_AMOUNT from 'constants/PIXEL_AMOUNT';
-import propertiesValueStrings from 'constants/propertiesValueStrings';
-
 import degObj from 'helpers/degObj';
 
 import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
@@ -20,117 +17,54 @@ import ShapeContainer from './ShapeContainer';
 import TriangleButton from './TriangleButton';
 import Victory from './Victory';
 
+import {
+	useSetCurrPropertyTitle,
+	useSetCurrPropertyValue,
+	useSetTargetShape,
+	useSetUserShape
+} from 'views/GameView/effects';
+
+import {
+	useChangeUserProperty,
+	useChangeUserValues
+} from 'views/GameView/hooks';
+
+import {
+	currPropertyTitleState,
+	currPropertyValueState,
+	targetShapeState,
+	userShapeState
+} from 'views/GameView/store';
+
 function GameView() {
-	const { id } = useParams();
 	const levelsData = useRecoilValue(levelsDataState);
 	const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
-	const [targetShape, setTargetShape] = useState([]);
-	const [userShape, setUserShape] = useState([]);
-	const [propertyTitle, setPropertyTitle] = useState([]);
-	const [propertyValue, setPropertyValue] = useState([]);
-	const [currUserShapeIdx, setUserShapeIdx] = useState(0);
+	const userShape = useRecoilValue(userShapeState);
+	const targetShape = useRecoilValue(targetShapeState);
+	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
+	const currPropertyValue = useRecoilValue(currPropertyValueState);
+
 	const [isVictory, setIsVictory] = useState(false);
 
+	const changeUserProperty = useChangeUserProperty();
+	const changeUserValues = useChangeUserValues();
+
+	const { id } = useParams();
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const userProperties = levelsData[currIdxLevel]?.userProperties;
-		const userPropertiesArr = [];
-
-		for (const property in userProperties) {
-			if (property === 'customProperties') {
-				for (const customProperty in userProperties[property]) {
-					userPropertiesArr.push({
-						[customProperty]: userProperties[property][customProperty],
-					});
-				}
-			} else {
-				userPropertiesArr.push({ [property]: userProperties[property] });
-			}
-		}
-		setUserShape(userPropertiesArr);
-	}, [levelsData, currIdxLevel]);
+	useSetUserShape();
+	useSetTargetShape();
+	useSetCurrPropertyTitle();
+	useSetCurrPropertyValue();
 
 	useEffect(() => {
 		setCurrIdxLevel(id);
 	}, [id, setCurrIdxLevel]);
 
 	useEffect(() => {
-		const targetProperties = levelsData[currIdxLevel]?.targetProperties;
-		const targetPropertiesArr = [];
-		for (const property in targetProperties) {
-			if (property === 'customProperties') {
-				for (const customProperty in targetProperties[property]) {
-					targetPropertiesArr.push({
-						[customProperty]: targetProperties[property][customProperty],
-					});
-				}
-			} else {
-				targetPropertiesArr.push({ [property]: targetProperties[property] });
-			}
-		}
-
-		setTargetShape(targetPropertiesArr);
-	}, [levelsData, currIdxLevel]);
-
-	useEffect(() => {
-		if (userShape.length > 0) {
-			setPropertyTitle(Object.keys(userShape[currUserShapeIdx])[0]);
-			setPropertyValue(Object.values(userShape[currUserShapeIdx])[0]);
-		}
-	}, [userShape, currUserShapeIdx]);
-
-	useEffect(() => {
 		setIsVictory(checkVictory(userShape, targetShape));
 	}, [userShape, targetShape]);
 
-	function changeUserProperty(num) {
-		const newIndex = num + currUserShapeIdx;
-		if (newIndex === userShape.length) {
-			setUserShapeIdx(0);
-		} else if (newIndex < 0) {
-			setUserShapeIdx(userShape.length - 1);
-		} else {
-			setUserShapeIdx(newIndex);
-		}
-	}
-	function changeUserValues(sign) {
-		const newUserShape = [...userShape];
-		if (typeof newUserShape[currUserShapeIdx][propertyTitle] === 'number') {
-			if (sign === '+') {
-				newUserShape[currUserShapeIdx][propertyTitle] += PIXEL_AMOUNT;
-			} else {
-				newUserShape[currUserShapeIdx][propertyTitle] -= PIXEL_AMOUNT;
-			}
-		} else {
-			const value = newUserShape[currUserShapeIdx][propertyTitle];
-			const valueIndex = propertiesValueStrings[propertyTitle].indexOf(value);
-			if (sign === '+') {
-				if (valueIndex === propertiesValueStrings[propertyTitle].length - 1) {
-					const newValueIndex = 0;
-					newUserShape[currUserShapeIdx][propertyTitle] =
-						propertiesValueStrings[propertyTitle][newValueIndex];
-				} else {
-					const newValueIndex = valueIndex + 1;
-					newUserShape[currUserShapeIdx][propertyTitle] =
-						propertiesValueStrings[propertyTitle][newValueIndex];
-				}
-			} else {
-				if (valueIndex === 0) {
-					const newValueIndex =
-						propertiesValueStrings[propertyTitle].length - 1;
-					newUserShape[currUserShapeIdx][propertyTitle] =
-						propertiesValueStrings[propertyTitle][newValueIndex];
-				} else {
-					const newValueIndex = valueIndex - 1;
-					newUserShape[currUserShapeIdx][propertyTitle] =
-						propertiesValueStrings[propertyTitle][newValueIndex];
-				}
-			}
-		}
-
-		setUserShape(newUserShape);
-	}
 	function checkVictory(userShape, targetShape) {
 		let flag = true;
 		for (let i = 0; i < userShape.length; i++) {
@@ -185,8 +119,8 @@ function GameView() {
 								onClick={() => changeUserProperty(-1)}
 							/>
 							<PropertyContainer>
-								<PropertyName>{propertyTitle}</PropertyName>
-								<PropertyValue>{propertyValue}</PropertyValue>
+								<PropertyName>{currPropertyTitle}</PropertyName>
+								<PropertyValue>{currPropertyValue}</PropertyValue>
 							</PropertyContainer>
 							<TriangleButton
 								deg={degObj.RIGHT}
