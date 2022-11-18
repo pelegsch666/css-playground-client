@@ -1,25 +1,28 @@
-import { useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import {
-    currUserShapePropertyIdxState,
-    userShapeState
-} from 'views/GameView/store';
+  currUserShapePropertyIdxState,
+  userShapeState,
+} from "views/GameView/store";
 
-function useChangeUserProperty(num) {
-	const userShape = useRecoilValue(userShapeState);
-	const [currUserShapePropertyIdx, setUserShapePropertyIdx] = useRecoilState(
-		currUserShapePropertyIdxState
-	);
+function useChangeUserProperty() {
+  const userShape = useRecoilValue(userShapeState);
+  console.log(userShape);
+  const [currUserShapePropertyIdx, setUserShapePropertyIdx] = useRecoilState(
+    currUserShapePropertyIdxState
+  );
 
-	const newIndex = useState(currUserShapePropertyIdx + num)[0];
-
-	if (newIndex === userShape.length) {
-		return setUserShapePropertyIdx(0);
-	} else if (newIndex < 0) {
-		return setUserShapePropertyIdx(userShape.length - 1);
-	} else {
-		return setUserShapePropertyIdx(newIndex);
-	}
+  function setter(num) {
+    const newIndex = currUserShapePropertyIdx + num;
+    if (newIndex === userShape.length) {
+      setUserShapePropertyIdx(0);
+    } else if (newIndex < 0) {
+      setUserShapePropertyIdx(userShape.length - 1);
+    } else {
+      setUserShapePropertyIdx(newIndex);
+    }
+  }
+  return setter;
 }
 
 export default useChangeUserProperty;

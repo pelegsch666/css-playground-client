@@ -10,22 +10,37 @@ import {
     userShapeState
 } from 'views/GameView/store';
 
-function useChangeUserValues(sign) {
+function useChangeUserValues() {
 	const [userShape, setUserShape] = useRecoilState(userShapeState);
 	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
 	const currUserShapePropertyIdx = useRecoilValue(
 		currUserShapePropertyIdxState
 	);
-
+    function setter(sign){
 	const newUserShape = [...userShape];
-	if (
+	console.log('newUserShape',newUserShape)
+	console.log('currIdx', currUserShapePropertyIdx)
+	console.log('currPropertyTitle',currPropertyTitle)
+	console.log('newUserShape[currUserShapePropertyIdx][currPropertyTitle]',newUserShape[currUserShapePropertyIdx][currPropertyTitle])
+	console.log(typeof newUserShape[currUserShapePropertyIdx][currPropertyTitle] ===
+		'number')
+	
+	console.log('sign',sign)
+		if (
 		typeof newUserShape[currUserShapePropertyIdx][currPropertyTitle] ===
 		'number'
-	) {
-		if (sign === '+') {
-			newUserShape[currUserShapePropertyIdx][currPropertyTitle] += PIXEL_AMOUNT;
+	    
+		) {
+		console.log(newUserShape[currUserShapePropertyIdx])
+			if (sign === '+') {
+			Object.defineProperties(newUserShape[currUserShapePropertyIdx],{
+			[currPropertyTitle]:  newUserShape[currUserShapePropertyIdx][currPropertyTitle] +
+			 PIXEL_AMOUNT
+			})    
 		} else {
-			newUserShape[currUserShapePropertyIdx][currPropertyTitle] -= PIXEL_AMOUNT;
+			Object.defineProperties(newUserShape[currUserShapePropertyIdx],{
+				[currPropertyTitle]:  newUserShape[currUserShapePropertyIdx][currPropertyTitle] -
+				 PIXEL_AMOUNT})
 		}
 	} else {
 		const value = newUserShape[currUserShapePropertyIdx][currPropertyTitle];
@@ -51,10 +66,11 @@ function useChangeUserValues(sign) {
 				newUserShape[currUserShapePropertyIdx][currPropertyTitle] =
 					propertiesValueStrings[currPropertyTitle][newValueIndex];
 			}
-		}
+		} }
 
-		return setUserShape(newUserShape);
+		
 	}
+	return setter;
 }
 
 export default useChangeUserValues;
