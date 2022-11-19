@@ -19,14 +19,41 @@ function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 			return (
 				<div style={styles}>
 					<div
-						style={{ width: '40px', height: '40px', backgroundColor: 'salmon' }}
-					></div>
+						style={{
+							width: '40px',
+							height: '40px',
+							backgroundColor: 'salmon',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						1
+					</div>
 					<div
-						style={{ width: '40px', height: '40px', backgroundColor: 'black' }}
-					></div>
+						style={{
+							width: '40px',
+							height: '40px',
+							backgroundColor: 'black',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						2
+					</div>
 					<div
-						style={{ width: '40px', height: '40px', backgroundColor: 'navy' }}
-					></div>
+						style={{
+							width: '40px',
+							height: '40px',
+							backgroundColor: 'navy',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						3
+					</div>
 				</div>
 			);
 		}

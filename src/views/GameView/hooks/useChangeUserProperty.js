@@ -7,7 +7,6 @@ import {
 
 function useChangeUserProperty() {
   const userShape = useRecoilValue(userShapeState);
-  console.log(userShape);
   const [currUserShapePropertyIdx, setUserShapePropertyIdx] = useRecoilState(
     currUserShapePropertyIdxState
   );
