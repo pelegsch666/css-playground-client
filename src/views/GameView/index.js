@@ -18,23 +18,25 @@ import TriangleButton from "./TriangleButton";
 import Victory from "./Victory";
 
 import {
-  useSetCurrPropertyTitle,
-  useSetCurrPropertyValue,
-  useSetTargetShape,
-  useSetUserShape,
+	useSetCurrPropertyTitle,
+	useSetCurrPropertyValue,
+	useSetTargetShape,
+	useSetUserShape
 } from "views/GameView/effects";
 
 import {
-  useChangeUserProperty,
-  useChangeUserValues,
+	useChangeUserProperty,
+	useChangeUserValues
 } from "views/GameView/hooks";
 
 import {
-  currPropertyTitleState,
-  currPropertyValueState,
-  targetShapeState,
-  userShapeState,
+	currPropertyTitleState,
+	currPropertyValueState,
+	targetShapeState,
+	userShapeState
 } from "views/GameView/store";
+
+import { checkVictory } from 'views/GameView/helpers/checkVictory';
 
 function GameView() {
   const levelsData = useRecoilValue(levelsDataState);
@@ -49,9 +51,6 @@ function GameView() {
   const setUserProperty = useChangeUserProperty();
   const setUserValues = useChangeUserValues();
   
-   
-
-
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -68,23 +67,12 @@ function GameView() {
   	setIsVictory(checkVictory(userShape, targetShape));
   }, [userShape, targetShape]);
 
-  function checkVictory(userShape, targetShape) {
-    let flag = true;
-    for (let i = 0; i < userShape.length; i++) {
-      const keyName = Object.keys(userShape[i])[0];
-      if (userShape[i][keyName] !== targetShape[i][keyName]) {
-        flag = false;
-        return flag;
-      }
-    }
-
-    return flag;
-  }
-
+ 
   function changeIndexOfLevel() {
     setCurrIdxLevel(+currIdxLevel + 1);
     navigate(`/GameView/${+currIdxLevel + 1}`);
   }
+
 
   return (
     <>

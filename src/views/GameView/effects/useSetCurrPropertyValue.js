@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import {
+	currPropertyTitleState,
 	currPropertyValueState,
 	currUserShapePropertyIdxState,
 	userShapeState,
@@ -14,15 +15,21 @@ function useSetCurrPropertyValue() {
 		currUserShapePropertyIdxState
 	);
 
+	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
+
 	const setCurrPropertyValue = useSetRecoilState(currPropertyValueState);
 	useEffect(() => {
 		if (userShape.length > 0) {
 			setCurrPropertyValue(
-				Object.values(userShape[currUserShapePropertyIdx])[0]
+				userShape[currUserShapePropertyIdx][currPropertyTitle]?.value
 			);
 		}
-	}, [userShape, currUserShapePropertyIdx, setCurrPropertyValue]);
+	}, [
+		userShape,
+		currUserShapePropertyIdx,
+		setCurrPropertyValue,
+		currPropertyTitle,
+	]);
 }
-
 
 export default useSetCurrPropertyValue;

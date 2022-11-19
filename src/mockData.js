@@ -8,126 +8,347 @@ function getRandomIntWithGap(min, max, gap) {
 	return num - remainder;
 }
 
+function updateValueWithGapAndSign(value, sign, gap) {
+	if (sign === '+') {
+		return value + gap;
+	} else {
+		return value - gap;
+	}
+}
+
+const Shape_It_Out = {
+	levelName: 'Shape It Out',
+	levelId: 1,
+	renderingKey: null,
+	defaultProperties: {
+		backgroundColor: '#aaffaa',
+	},
+	targetProperties: {
+		width: {
+			gap: 5,
+			min: 20,
+			max: 180,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		height: {
+			gap: 5,
+			min: 60,
+			max: 160,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		borderRadius: {
+			gap: 5,
+			min: 20,
+			max: 70,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+	userProperties: {
+		width: {
+			gap: 5,
+			min: 20,
+			max: 180,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		height: {
+			gap: 5,
+			min: 60,
+			max: 160,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		borderRadius: {
+			gap: 5,
+			min: 10,
+			max: 70,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+};
+
+const Dont_Flex = {
+	levelName: 'Dont Flex',
+	levelId: 2,
+	renderingKey: 'Flex',
+	defaultProperties: {
+		display: 'flex',
+		width: 200,
+		height: 200,
+		backgroundColor: '#aaffaa',
+	},
+	targetProperties: {
+		justifyContent: {
+			items: [
+				'flex-start',
+				'flex-end',
+				'center',
+				'space-between',
+				'space-around',
+				'space-evenly',
+			],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+
+		alignItems: {
+			items: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+
+		flexDirection: {
+			items: ['row', 'row-reverse', 'column', 'column-reverse'],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+	},
+	userProperties: {
+		justifyContent: {
+			items: [
+				'flex-start',
+				'flex-end',
+				'center',
+				'space-between',
+				'space-around',
+				'space-evenly',
+			],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+
+		alignItems: {
+			items: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+
+		flexDirection: {
+			items: ['row', 'row-reverse', 'column', 'column-reverse'],
+			get value() {
+				return getRandomItemFromArray(this.items);
+			},
+		},
+	},
+};
+
+const Box_Model = {
+	levelName: 'Box Model',
+	levelId: 3,
+	renderingKey: 'Box Model',
+	defaultProperties: {
+		display: 'flex',
+		width: 200,
+		height: 200,
+		backgroundColor: '#aaffaa',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	targetProperties: {
+		paddingRight: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingLeft: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingTop: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingBottom: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+	userProperties: {
+		paddingRight: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingLeft: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingTop: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		paddingBottom: {
+			gap: 5,
+			min: 0,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+};
+
+const Box_Model_Margin = {
+	levelName: 'Box Model-Margin',
+	levelId: 4,
+	renderingKey: 'Margin',
+	defaultProperties: {
+		display: 'flex',
+		width: 80,
+		height: 80,
+		backgroundColor: '#aaffaa',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	targetProperties: {
+		marginRight: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginLeft: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginTop: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginBottom: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+	userProperties: {
+		marginRight: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginLeft: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginTop: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+		marginBottom: {
+			gap: 5,
+			min: 5,
+			max: 40,
+			get value() {
+				return getRandomIntWithGap(this.min, this.max, this.gap);
+			},
+		},
+	},
+};
+
+class Rgb {
+	constructor(min, max, gap) {
+		this.min = min;
+		this.max = max;
+		this.gap = gap;
+		this.value = getRandomIntWithGap(this.min, this.max, this.gap);
+	}
+}
+
+const Red_Green_And_Blue = {
+	levelName: 'Red, Green and Blue',
+	levelId: 5,
+	renderingKey: 'Rgb',
+	defaultProperties: {
+		width: 200,
+		height: 200,
+		border: '10px solid black', 
+	},
+	targetProperties: {
+		customProperties: {
+			red: new Rgb(0, 250, 50),
+			green: new Rgb(0, 250, 50),
+			blue: new Rgb(0, 250, 50),
+		},
+	},
+	userProperties: {
+		customProperties: {
+			red: new Rgb(0, 250, 50),
+			green: new Rgb(0, 250, 50),
+			blue: new Rgb(0, 250, 50),
+		},
+	},
+};
+
 export const objMockData = [
-	{
-		levelName: 'Shape It Out',
-		levelId: 1,
-		renderingKey: null,
-		defaultProperties: {
-			backgroundColor: '#aaffaa',
-		},
-		targetProperties: {
-			width: getRandomIntWithGap(20, 180, PIXEL_AMOUNT),
-			height: getRandomIntWithGap(60, 160, PIXEL_AMOUNT),
-			borderRadius: getRandomIntWithGap(10, 70, PIXEL_AMOUNT),
-		},
-		userProperties: {
-			width: getRandomIntWithGap(70, 150, PIXEL_AMOUNT),
-			height: getRandomIntWithGap(100, 150, PIXEL_AMOUNT),
-			borderRadius: getRandomIntWithGap(5, 25, PIXEL_AMOUNT),
-		},
-	},
-	{
-		levelName: 'Dont Flex',
-		levelId: 2,
-		renderingKey: 'Flex',
-		defaultProperties: {
-			display: 'flex',
-			width: 200,
-			height: 200,
-			backgroundColor: '#aaffaa',
-		},
-		targetProperties: {
-			justifyContent: getRandomItemFromArray(
-				propertiesValueStrings.justifyContent
-			),
-			alignItems: getRandomItemFromArray(propertiesValueStrings.alignItems),
-			flexDirection: getRandomItemFromArray(
-				propertiesValueStrings.flexDirection
-			),
-		},
-		userProperties: {
-			justifyContent: getRandomItemFromArray(
-				propertiesValueStrings.justifyContent
-			),
-			alignItems: getRandomItemFromArray(propertiesValueStrings.alignItems),
-			flexDirection: getRandomItemFromArray(
-				propertiesValueStrings.flexDirection
-			),
-		},
-	},
-	{
-		levelName: 'Box Model',
-		levelId: 3,
-		renderingKey: 'Box Model',
-		defaultProperties: {
-			display: 'flex',
-			width: 200,
-			height: 200,
-			backgroundColor: '#aaffaa',
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		targetProperties: {
-			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-		},
-		userProperties: {
-			paddingRight: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingLeft: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingTop: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-			paddingBottom: getRandomIntWithGap(0, 40, PIXEL_AMOUNT),
-		},
-	},
-	{
-		levelName: 'Box Model-Margin',
-		levelId: 4,
-		renderingKey: 'Margin',
-		defaultProperties: {
-			display: 'flex',
-			width: 80,
-			height: 80,
-			backgroundColor: '#aaffaa',
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		targetProperties: {
-			marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-		},
-		userProperties: {
-			marginRight: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginLeft: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginTop: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-			marginBottom: getRandomIntWithGap(5, 40, PIXEL_AMOUNT),
-		},
-	},
-	{
-		levelName: 'Red, Green and Blue',
-		levelId: 5,
-		renderingKey: 'Rgb',
-		defaultProperties: {
-			width: 200,
-			height: 200,
-			border: '10px solid black',
-		},
-		targetProperties: {
-			customProperties: {
-				red: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-				green: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-				blue: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-			},
-		},
-		userProperties: {
-			customProperties: {
-				red: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-				green: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-				blue: getRandomIntWithGap(50, 250, PIXEL_AMOUNT),
-			},
-		},
-	},
+	Shape_It_Out,
+	Dont_Flex,
+	Box_Model,
+	Box_Model_Margin,
+	Red_Green_And_Blue,
 ];

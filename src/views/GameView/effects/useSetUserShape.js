@@ -26,6 +26,7 @@ function useSetUserShape() {
 				userPropertiesArr.push({ [property]: userProperties[property] });
 			}
 		}
+
 		setUserShape(userPropertiesArr);
 	}, [levelsData, currIdxLevel, setUserShape]);
 }

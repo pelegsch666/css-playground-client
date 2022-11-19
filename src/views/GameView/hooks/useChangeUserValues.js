@@ -6,29 +6,38 @@ import propertiesValueStrings from 'constants/propertiesValueStrings';
 import {
 	currPropertyTitleState,
 	currUserShapePropertyIdxState,
-	userShapeState,
+	userShapeState
 } from 'views/GameView/store';
+
+function isValueNumber(value) {
+	return typeof value === 'number';
+}
+
+function getNewValueBySignAndGap(value, sign, gap) {
+	let res;
+	if (sign === '+') {
+		res = value + gap;
+	} else if (sign === '-') {
+		res = value - gap;
+	}
+	return res;
+}
 
 function useChangeUserValues() {
 	const [userShape, setUserShape] = useRecoilState(userShapeState);
 	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
 	const currPropIdx = useRecoilValue(currUserShapePropertyIdxState);
+
 	function setter(sign) {
 		const newUserShape = [...userShape];
-		if (typeof newUserShape[currPropIdx][currPropertyTitle] === 'number') {
-			if (sign === '+') {
-				newUserShape[currPropIdx] = {
-					[currPropertyTitle]:
-						newUserShape[currPropIdx][currPropertyTitle] + PIXEL_AMOUNT,
-				};
-				setUserShape(newUserShape);
-			} else {
-				newUserShape[currPropIdx] = {
-					[currPropertyTitle]:
-						newUserShape[currPropIdx][currPropertyTitle] - PIXEL_AMOUNT,
-				};
-				setUserShape(newUserShape);
-			}
+		const newCurrProp = { ...newUserShape[currPropIdx][currPropertyTitle] };
+
+		if (isValueNumber(newCurrProp.value)) {
+			const { value, gap } = newCurrProp;
+			const newValue = getNewValueBySignAndGap(value, sign, gap);
+			newCurrProp.value = newValue;
+			newUserShape[currPropIdx] = { [currPropertyTitle]: { ...newCurrProp } };
+			setUserShape(newUserShape);
 		} else {
 			const value = newUserShape[currPropIdx][currPropertyTitle];
 			const valueIndex =

@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 
 function getTheStyles(shapeProperties, defaultProperties) {
+	console.log('shapeProperties', shapeProperties);
+	console.log('defaultProperties', defaultProperties);
 	let shapeStyles = {};
 	for (const prop of shapeProperties) {
-		shapeStyles = { ...shapeStyles, ...prop };
+		console.log('prop', prop);
+		const propKey = Object.keys(prop)[0]; // red
+		console.log('propKey', propKey);
+		const propValue = prop[propKey].value;
+		console.log('propValue', propValue);
+		shapeStyles = { ...shapeStyles, [propKey]: propValue };
 	}
 	const allProperties = { ...shapeStyles, ...defaultProperties };
 	return allProperties;
