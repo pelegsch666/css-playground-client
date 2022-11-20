@@ -8,9 +8,10 @@ import { targetShapeState } from 'views/GameView/store';
 function useSetTargetShape() {
 	const levelsData = useRecoilValue(levelsDataState);
 	const currIdxLevel = useRecoilValue(currIndexLevelState);
-
+    
 	const setTargetShape = useSetRecoilState(targetShapeState);
 	useEffect(() => {
+		console.log('checking the effect')
 		const targetProperties = levelsData[currIdxLevel]?.targetProperties;
 		const targetPropertiesArr = [];
 		for (const property in targetProperties) {
@@ -26,7 +27,7 @@ function useSetTargetShape() {
 		}
 
 		setTargetShape(targetPropertiesArr);
-	}, [levelsData, currIdxLevel, setTargetShape]);
+	}, [ currIdxLevel]);
 }
 
 export default useSetTargetShape;
