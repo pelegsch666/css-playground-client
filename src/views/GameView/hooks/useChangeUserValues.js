@@ -1,7 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import propertiesValueStrings from 'constants/propertiesValueStrings';
-
 import {
 	currPropertyTitleState,
 	currUserShapePropertyIdxState,

@@ -7,21 +7,21 @@ import getLevelsTitlesFromData from 'helpers/getLevelsTitlesFromData';
 
 import { currIndexLevelState, levelsDataState } from 'store';
 
-import { _SC_flexColumn } from 'components/_SC/layoutUtil';
-import LevelLabel from './LevelLabel';
-import LevelsDiv from './LevelsDiv';
-import PlayButton from './PlayButton';
-import StyledH1 from './StyledH1';
-import StyledInput from './StyledInput';
-import StyledLabel from './StyledLabel';
-import TriangleButton from './TriangleButton';
+import StackCol from 'components/layout/StackCol';
+
+import LevelLabel from 'views/WelcomeView/components/LevelLabel';
+import LevelsDiv from 'views/WelcomeView/components/LevelsDiv';
+import PlayButton from 'views/WelcomeView/components/PlayButton';
+import StyledH1 from 'views/WelcomeView/components/StyledH1';
+import StyledInput from 'views/WelcomeView/components/StyledInput';
+import StyledLabel from 'views/WelcomeView/components/StyledLabel';
+import TriangleButton from 'views/WelcomeView/components/TriangleButton';
 
 export default function WelcomeView() {
 	const [currLevelIndex, setCurrLevelIndex] =
 		useRecoilState(currIndexLevelState);
 	const levelsData = useRecoilValue(levelsDataState);
 	const [titles, setTitles] = useState([]);
-	const [playerName, setPlayerName] = useState('');
 	const setRoomId = useState('')[1];
 	const navigate = useNavigate();
 	const isCreateOn = useState(true)[0];
@@ -50,12 +50,6 @@ export default function WelcomeView() {
 		setCurrLevelIndex(newLevelIndex);
 	}
 
-	useEffect(() => {}, [playerName]);
-
-	function handleName(name) {
-		setPlayerName(name);
-	}
-
 	function handleClickLevel(index) {
 		setCurrLevelIndex(index);
 	}
@@ -65,7 +59,7 @@ export default function WelcomeView() {
 
 	return (
 		<>
-			<_SC_flexColumn isCentered={true}>
+			<StackCol isCentered={true}>
 				<StyledH1>CSS Playground</StyledH1>
 
 				{isCreateOn ? (
@@ -105,7 +99,7 @@ export default function WelcomeView() {
 				)}
 
 				<PlayButton onClick={handlePlayClick}>PLAY </PlayButton>
-			</_SC_flexColumn>
+			</StackCol>
 		</>
 	);
 }

@@ -29,7 +29,6 @@ function App() {
 		<>
 			<BrowserRouter>
 				<GlobalStyle />
-
 				<Routes>
 					<Route path="/" element={<WelcomeView />} />
 					<Route path="GameView/:id" element={<GameView />} />

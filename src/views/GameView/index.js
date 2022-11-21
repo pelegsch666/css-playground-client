@@ -1,142 +1,133 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import degObj from "helpers/degObj";
+import { currIndexLevelState, levelsDataState } from 'store';
 
-import { currIndexLevelState, levelsDataState } from "store";
+import StackCol from 'components/layout/StackCol';
+import StackRow from 'components/layout/StackRow';
 
-import { _SC_flexColumn, _SC_flexRow } from "components/_SC/layoutUtil";
-import CircleButton from "./CircleButton";
-import Line from "./Line";
-import PropertyContainer from "./PropertyContainer";
-import PropertyName from "./PropertyName";
-import PropertyValue from "./PropertyValue";
-import Shape from "./Shape";
-import ShapeContainer from "./ShapeContainer";
-import TriangleButton from "./TriangleButton";
-import Victory from "./Victory";
-
-import {
-	useSetCurrPropertyTitle,
-	useSetCurrPropertyValue,
-	useSetTargetShape,
-	useSetUserShape
-} from "views/GameView/effects";
+import CircleButton from 'views/GameView/components/CircleButton';
+import Line from 'views/GameView/components/Line';
+import PropertyContainer from 'views/GameView/components/PropertyContainer';
+import PropertyName from 'views/GameView/components/PropertyName';
+import PropertyValue from 'views/GameView/components/PropertyValue';
+import Shape from 'views/GameView/components/Shape';
+import ShapeContainer from 'views/GameView/components/ShapeContainer';
+import TriangleButton from 'views/GameView/components/TriangleButton';
+import Victory from 'views/GameView/components/Victory';
 
 import {
-	useChangeUserProperty,
-	useChangeUserValues
-} from "views/GameView/hooks";
+  useSetCurrIdxLevel,
+  useSetCurrPropertyTitle,
+  useSetCurrPropertyValue, useSetIsVictory, useSetTargetShape,
+  useSetUserShape
+} from 'views/GameView/effects';
 
 import {
-	currPropertyTitleState,
-	currPropertyValueState,
-	targetShapeState,
-	userShapeState
-} from "views/GameView/store";
+  useChangeUserProperty,
+  useChangeUserValues
+} from 'views/GameView/hooks';
 
-import  checkVictory  from 'helpers/checkVictory';
+import {
+  currPropertyTitleState,
+  currPropertyValueState, isVictoryState, targetShapeState,
+  userShapeState
+} from 'views/GameView/store';
+
+import degObj from 'helpers/degObj';
 
 function GameView() {
-  const levelsData = useRecoilValue(levelsDataState);
-  const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
-  const userShape = useRecoilValue(userShapeState);
-  const targetShape = useRecoilValue(targetShapeState);
-  const currPropertyTitle = useRecoilValue(currPropertyTitleState);
-  const currPropertyValue = useRecoilValue(currPropertyValueState);
+	const levelsData = useRecoilValue(levelsDataState);
+	const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
+	const userShape = useRecoilValue(userShapeState);
+	const targetShape = useRecoilValue(targetShapeState);
+	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
+	const currPropertyValue = useRecoilValue(currPropertyValueState);
+  const isVictory = useRecoilValue(isVictoryState);
 
-  const [isVictory, setIsVictory] = useState(false);
+	const setUserProperty = useChangeUserProperty();
+	const setUserValues = useChangeUserValues();
 
-  const setUserProperty = useChangeUserProperty();
-  const setUserValues = useChangeUserValues();
-  
-  const { id } = useParams();
-  const navigate = useNavigate();
+	const { id } = useParams();
+	const navigate = useNavigate();
 
-  useSetUserShape();
-  useSetTargetShape();
-  useSetCurrPropertyTitle();
-  useSetCurrPropertyValue();
-
-  useEffect(() => {
-  	setCurrIdxLevel(id);
-  }, [id, setCurrIdxLevel]);
-
-  useEffect(() => {
-  	setIsVictory(checkVictory(userShape, targetShape));
-  }, [userShape, targetShape]);
-
- 
-  function changeIndexOfLevel() {
-    setCurrIdxLevel(+currIdxLevel + 1);
-    navigate(`/GameView/${+currIdxLevel + 1}`);
-  }
+	useSetUserShape();
+	useSetTargetShape();
+	useSetCurrPropertyTitle();
+	useSetCurrPropertyValue();
+	useSetCurrIdxLevel();
+  useSetIsVictory();
 
 
-  return (
-    <>
-      <_SC_flexColumn isCentered={true}>
-        <h1>{levelsData[+id]?.levelName}</h1>
-        <ShapeContainer>
-          <Shape
-            shapeProperties={targetShape}
-            defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
-            renderingKey={levelsData[currIdxLevel]?.renderingKey}
-          />
-        </ShapeContainer>
-        <br />
-        <ShapeContainer>
-          <Shape
-            shapeProperties={userShape}
-            defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
-            renderingKey={levelsData[currIdxLevel]?.renderingKey}
-          />
-        </ShapeContainer>
-        <br />
-        <_SC_flexRow justifyContent="center" alignItems="center">
-          {isVictory ? (
-            <>
-              <Victory />
-              <TriangleButton
-                deg={degObj.RIGHT}
-                onClick={() => changeIndexOfLevel()}
-              />
-            </>
-          ) : (
-            <>
-              <TriangleButton
-                deg={degObj.LEFT}
-                onClick={() => setUserProperty(-1)}
-              />
-              <PropertyContainer>
-                <PropertyName>{currPropertyTitle}</PropertyName>
-                <PropertyValue>{currPropertyValue}</PropertyValue>
-              </PropertyContainer>
-              <TriangleButton
-                deg={degObj.RIGHT}
-                onClick={() => setUserProperty(1)}
-              />
-            </>
-          )}
-        </_SC_flexRow>
-        <_SC_flexRow justifyContent="space-between" alignItems="center">
-          {isVictory ? (
-            ""
-          ) : (
-            <>
-              <CircleButton onClick={() => setUserValues("-")}>
-                <Line degree={90} />
-              </CircleButton>
-              <CircleButton onClick={() => setUserValues("+")}>
-                <Line degree={90} />
-                <Line degree={180} />
-              </CircleButton>
-            </>
-          )}
-        </_SC_flexRow>
-      </_SC_flexColumn>
-    </>
-  );
+
+	function changeIndexOfLevel() {
+		setCurrIdxLevel(+currIdxLevel + 1);
+		navigate(`/GameView/${+currIdxLevel + 1}`);
+	}
+
+	return (
+		<>
+			<StackCol isCentered={true}>
+				<h1>{levelsData[+id]?.levelName}</h1>
+				<ShapeContainer>
+					<Shape
+						shapeProperties={targetShape}
+						defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
+						renderingKey={levelsData[currIdxLevel]?.renderingKey}
+					/>
+				</ShapeContainer>
+				<br />
+				<ShapeContainer>
+					<Shape
+						shapeProperties={userShape}
+						defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
+						renderingKey={levelsData[currIdxLevel]?.renderingKey}
+					/>
+				</ShapeContainer>
+				<br />
+				<StackRow justifyContent="center" alignItems="center">
+					{isVictory ? (
+						<>
+							<Victory />
+							<TriangleButton
+								deg={degObj.RIGHT}
+								onClick={() => changeIndexOfLevel()}
+							/>
+						</>
+					) : (
+						<>
+							<TriangleButton
+								deg={degObj.LEFT}
+								onClick={() => setUserProperty(-1)}
+							/>
+							<PropertyContainer>
+								<PropertyName>{currPropertyTitle}</PropertyName>
+								<PropertyValue>{currPropertyValue}</PropertyValue>
+							</PropertyContainer>
+							<TriangleButton
+								deg={degObj.RIGHT}
+								onClick={() => setUserProperty(1)}
+							/>
+						</>
+					)}
+				</StackRow>
+				<StackRow justifyContent="space-between" alignItems="center">
+					{isVictory ? (
+						''
+					) : (
+						<>
+							<CircleButton onClick={() => setUserValues('-')}>
+								<Line degree={90} />
+							</CircleButton>
+							<CircleButton onClick={() => setUserValues('+')}>
+								<Line degree={90} />
+								<Line degree={180} />
+							</CircleButton>
+						</>
+					)}
+				</StackRow>
+			</StackCol>
+		</>
+	);
 }
 export default GameView;
