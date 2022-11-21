@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
-
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
+import { currIndexLevelState, levelsDataState } from 'store';
 import { userShapeState } from 'views/GameView/store';
 
 function useSetUserShape() {
 	const levelsData = useRecoilValue(levelsDataState);
 	const currIdxLevel = useRecoilValue(currIndexLevelState);
-
 	const setUserShape = useSetRecoilState(userShapeState);
 
 	useEffect(() => {
@@ -23,10 +21,10 @@ function useSetUserShape() {
 					});
 				}
 			} else {
-				userPropertiesArr.push({ [property]: userProperties[property] });
+				const { value, gap, min, max, items } = userProperties[property];
+				userPropertiesArr.push({ [property]: { value, gap, min, max, items } });
 			}
 		}
-
 		setUserShape(userPropertiesArr);
 	}, [levelsData, currIdxLevel, setUserShape]);
 }

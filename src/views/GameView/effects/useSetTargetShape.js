@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
+import { currIndexLevelState, levelsDataState } from 'store';
 import { targetShapeState } from 'views/GameView/store';
 
 function useSetTargetShape() {
@@ -11,7 +10,6 @@ function useSetTargetShape() {
     
 	const setTargetShape = useSetRecoilState(targetShapeState);
 	useEffect(() => {
-		console.log('checking the effect')
 		const targetProperties = levelsData[currIdxLevel]?.targetProperties;
 		const targetPropertiesArr = [];
 		for (const property in targetProperties) {
@@ -22,12 +20,13 @@ function useSetTargetShape() {
 					});
 				}
 			} else {
-				targetPropertiesArr.push({ [property]: targetProperties[property] });
+				const { value, gap, min, max } = targetProperties[property];
+				targetPropertiesArr.push({ [property]: { value, gap, min, max } });
 			}
 		}
 
 		setTargetShape(targetPropertiesArr);
-	}, [ currIdxLevel]);
+	}, [currIdxLevel, levelsData, setTargetShape]);
 }
 
 export default useSetTargetShape;

@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 import degObj from "helpers/degObj";
 
-import { currIndexLevelState, levelsDataState } from "recoil/globalStates";
+import { currIndexLevelState, levelsDataState } from "store";
 
 import { _SC_flexColumn, _SC_flexRow } from "components/_SC/layoutUtil";
 import CircleButton from "./CircleButton";
@@ -36,7 +36,7 @@ import {
 	userShapeState
 } from "views/GameView/store";
 
-import { checkVictory } from 'views/GameView/helpers/checkVictory';
+import  checkVictory  from 'helpers/checkVictory';
 
 function GameView() {
   const levelsData = useRecoilValue(levelsDataState);

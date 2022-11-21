@@ -1,4 +1,4 @@
-export function getLevelsTitlesFromData(levelData) {
+function getLevelsTitlesFromData(levelData) {
 	/*[{
     levelName: 'shape it out',
     levelId: 1,
@@ -15,3 +15,5 @@ export function getLevelsTitlesFromData(levelData) {
 	levelData.forEach((item) => levelTitleArr.push(item.levelName));
 	return levelTitleArr;
 }
+
+export default getLevelsTitlesFromData;

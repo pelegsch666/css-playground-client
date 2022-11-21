@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { createGlobalStyle } from 'styled-components';
-import { objMockData } from './mockData';
-import { levelsDataState } from './recoil/globalStates';
+
+import levels from 'levels';
+import { levelsDataState } from './store';
+
 import GameView from './views/GameView';
 import WelcomeView from './views/WelcomeView';
 
@@ -20,12 +22,8 @@ function App() {
 	const setLevelsData = useSetRecoilState(levelsDataState);
 
 	useEffect(() => {
-		setLevelsData(objMockData);
+		setLevelsData(levels);
 	}, [setLevelsData]);
-
-	useEffect(() => {
-		// TODO: on refresh, move to the welcome page
-	});
 
 	return (
 		<>

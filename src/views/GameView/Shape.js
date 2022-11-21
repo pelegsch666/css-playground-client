@@ -13,7 +13,6 @@ function getTheStyles(shapeProperties, defaultProperties) {
 }
 
 function Shape({ shapeProperties, defaultProperties, renderingKey }) {
-  console.log(shapeProperties)
   const [styles, setStyles] = useState({});
   useEffect(() => {
     setStyles(getTheStyles(shapeProperties, defaultProperties));

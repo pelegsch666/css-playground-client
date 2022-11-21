@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import degObj from 'helpers/degObj';
-import { getLevelsTitlesFromData } from 'helpers/getLevelsTitlesFromData';
+import getLevelsTitlesFromData from 'helpers/getLevelsTitlesFromData';
 
-import { currIndexLevelState, levelsDataState } from 'recoil/globalStates';
+import { currIndexLevelState, levelsDataState } from 'store';
 
 import { _SC_flexColumn } from 'components/_SC/layoutUtil';
 import LevelLabel from './LevelLabel';
