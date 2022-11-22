@@ -1,133 +1,52 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
-import { currIndexLevelState, levelsDataState } from 'store';
+import { levelsDataState } from "store";
 
-import StackCol from 'components/layout/StackCol';
-import StackRow from 'components/layout/StackRow';
-
-import CircleButton from 'views/GameView/components/CircleButton';
-import Line from 'views/GameView/components/Line';
-import PropertyContainer from 'views/GameView/components/PropertyContainer';
-import PropertyName from 'views/GameView/components/PropertyName';
-import PropertyValue from 'views/GameView/components/PropertyValue';
-import Shape from 'views/GameView/components/Shape';
-import ShapeContainer from 'views/GameView/components/ShapeContainer';
-import TriangleButton from 'views/GameView/components/TriangleButton';
-import Victory from 'views/GameView/components/Victory';
+import StackCol from "components/layout/StackCol";
+import StackRow from "components/layout/StackRow";
+import AdjusmentButtons from "views/GameView/components/AdjustmentButtons";
+import TargetShape from "views/GameView/components/TargetShape";
+import LevelTitle from "views/GameView/components/LevelTitle";
+import VictoryBlock from "views/GameView/components/VictoryBlock";
+import UserShape from "views/GameView/components/UserShape";
 
 import {
   useSetCurrIdxLevel,
   useSetCurrPropertyTitle,
-  useSetCurrPropertyValue, useSetIsVictory, useSetTargetShape,
-  useSetUserShape
-} from 'views/GameView/effects';
+  useSetCurrPropertyValue,
+  useSetIsVictory,
+  useSetTargetShape,
+  useSetUserShape,
+} from "views/GameView/effects";
 
-import {
-  useChangeUserProperty,
-  useChangeUserValues
-} from 'views/GameView/hooks';
+import { isVictoryState } from "views/GameView/store";
 
-import {
-  currPropertyTitleState,
-  currPropertyValueState, isVictoryState, targetShapeState,
-  userShapeState
-} from 'views/GameView/store';
-
-import degObj from 'helpers/degObj';
-
+import PropertySelector from "views/GameView/components/PropertySelector";
 function GameView() {
-	const levelsData = useRecoilValue(levelsDataState);
-	const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
-	const userShape = useRecoilValue(userShapeState);
-	const targetShape = useRecoilValue(targetShapeState);
-	const currPropertyTitle = useRecoilValue(currPropertyTitleState);
-	const currPropertyValue = useRecoilValue(currPropertyValueState);
+  const levelsData = useRecoilValue(levelsDataState);
+
   const isVictory = useRecoilValue(isVictoryState);
 
-	const setUserProperty = useChangeUserProperty();
-	const setUserValues = useChangeUserValues();
-
-	const { id } = useParams();
-	const navigate = useNavigate();
-
-	useSetUserShape();
-	useSetTargetShape();
-	useSetCurrPropertyTitle();
-	useSetCurrPropertyValue();
-	useSetCurrIdxLevel();
+  useSetUserShape();
+  useSetTargetShape();
+  useSetCurrPropertyTitle();
+  useSetCurrPropertyValue();
+  useSetCurrIdxLevel();
   useSetIsVictory();
 
-
-
-	function changeIndexOfLevel() {
-		setCurrIdxLevel(+currIdxLevel + 1);
-		navigate(`/GameView/${+currIdxLevel + 1}`);
-	}
-
-	return (
-		<>
-			<StackCol isCentered={true}>
-				<h1>{levelsData[+id]?.levelName}</h1>
-				<ShapeContainer>
-					<Shape
-						shapeProperties={targetShape}
-						defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
-						renderingKey={levelsData[currIdxLevel]?.renderingKey}
-					/>
-				</ShapeContainer>
-				<br />
-				<ShapeContainer>
-					<Shape
-						shapeProperties={userShape}
-						defaultProperties={levelsData[currIdxLevel]?.defaultProperties}
-						renderingKey={levelsData[currIdxLevel]?.renderingKey}
-					/>
-				</ShapeContainer>
-				<br />
-				<StackRow justifyContent="center" alignItems="center">
-					{isVictory ? (
-						<>
-							<Victory />
-							<TriangleButton
-								deg={degObj.RIGHT}
-								onClick={() => changeIndexOfLevel()}
-							/>
-						</>
-					) : (
-						<>
-							<TriangleButton
-								deg={degObj.LEFT}
-								onClick={() => setUserProperty(-1)}
-							/>
-							<PropertyContainer>
-								<PropertyName>{currPropertyTitle}</PropertyName>
-								<PropertyValue>{currPropertyValue}</PropertyValue>
-							</PropertyContainer>
-							<TriangleButton
-								deg={degObj.RIGHT}
-								onClick={() => setUserProperty(1)}
-							/>
-						</>
-					)}
-				</StackRow>
-				<StackRow justifyContent="space-between" alignItems="center">
-					{isVictory ? (
-						''
-					) : (
-						<>
-							<CircleButton onClick={() => setUserValues('-')}>
-								<Line degree={90} />
-							</CircleButton>
-							<CircleButton onClick={() => setUserValues('+')}>
-								<Line degree={90} />
-								<Line degree={180} />
-							</CircleButton>
-						</>
-					)}
-				</StackRow>
-			</StackCol>
-		</>
-	);
+  return (
+    <StackCol isCentered={true}>
+      <LevelTitle />
+      <TargetShape />
+      <UserShape />
+      <StackRow justifyContent="center" alignItems="center">
+        {isVictory ? <VictoryBlock /> : <PropertySelector />}
+      </StackRow>
+      <StackRow justifyContent="space-between" alignItems="center">
+        {!isVictory && <AdjusmentButtons />}
+      </StackRow>
+    </StackCol>
+  );
 }
 export default GameView;
