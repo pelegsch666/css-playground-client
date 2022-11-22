@@ -30,3 +30,8 @@ export const isVictoryState = atom({
 	default: false,
 });
 
+export const isInfoModalOpenState = atom({
+	key: 'isInfoModalOpenState',
+	default: false,
+})
+

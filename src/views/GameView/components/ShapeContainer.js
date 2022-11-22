@@ -12,7 +12,7 @@ const ShapeContainer = styled.div`
 	background: #540bd4;
 	border: 6px solid #16003b;
 	border-radius: 40px;
-    margin-bottom: 50px; 
+    margin-bottom: 5px; 
 	`;
 
 export default ShapeContainer;
