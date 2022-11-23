@@ -7,7 +7,7 @@ import TargetShape from "views/GameView/components/TargetShape";
 import LevelTitle from "views/GameView/components/LevelTitle";
 import VictoryBlock from "views/GameView/components/VictoryBlock";
 import UserShape from "views/GameView/components/UserShape";
-import InfoButton from "views/GameView/components/InfoButton";
+import InfoButton from "views/GameView/components/InfoModal/InfoButton";
 import InfoModal from "views/GameView/components/InfoModal";
 
 

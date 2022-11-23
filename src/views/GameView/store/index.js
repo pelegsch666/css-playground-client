@@ -34,4 +34,7 @@ export const isInfoModalOpenState = atom({
 	key: 'isInfoModalOpenState',
 	default: false,
 })
-
+export const currTabNameState = atom({
+	key: 'currTabNameState',
+	default: 'How To Play',
+})

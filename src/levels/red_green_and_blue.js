@@ -30,7 +30,7 @@ const red_green_and_blue = {
 			red: new Rgb(0, 250, 50),
 			green: new Rgb(0, 250, 50),
 			blue: new Rgb(0, 250, 50),
-		},
+		}
 	},
 };
 
