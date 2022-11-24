@@ -18,6 +18,7 @@ import {
   useSetIsVictory,
   useSetTargetShape,
   useSetUserShape,
+  useSetPropertiesLevelsNames,
 } from "views/GameView/effects";
 
 import { isInfoModalOpenState, isVictoryState } from "views/GameView/store";
@@ -34,6 +35,7 @@ function GameView() {
   useSetCurrPropertyValue();
   useSetCurrIdxLevel();
   useSetIsVictory();
+  useSetPropertiesLevelsNames();
 
   return (
     <>

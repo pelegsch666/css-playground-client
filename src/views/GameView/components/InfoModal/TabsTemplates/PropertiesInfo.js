@@ -1,18 +1,17 @@
+import { useRecoilValue } from "recoil";
 
+import { currPropertyLevelsNameState } from "views/GameView/store";
 
+import Explanation from "views/GameView/components/InfoModal/Explanation";
 
+export default function PropertiesInfo() {
+  const currPropertyLevelsName = useRecoilValue(currPropertyLevelsNameState);
 
-
-
-export default function PropertiesInfo(){
-    
-    
-    
-    
-    
-    return (
-        <div>
-        <p></p>
-        </div>
-    );
+  return (
+    <>
+      {currPropertyLevelsName.map((propertyName) => (
+        <Explanation propertyName={propertyName} />
+      ))}
+    </>
+  );
 }

@@ -38,3 +38,7 @@ export const currTabNameState = atom({
 	key: 'currTabNameState',
 	default: 'How To Play',
 })
+export const currPropertyLevelsNameState = atom({
+	key: 'currPropertyLevelsNameState',
+	default: [],
+})
