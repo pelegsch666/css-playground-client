@@ -9,7 +9,7 @@ left:0;
 right: 0;
 bottom: 0;
 flex-direction: column;
-border: 2px solid red;
+
 opacity: 0.9;
 z-index: 10;
 `

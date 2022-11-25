@@ -5,7 +5,7 @@ import TabButton from "views/GameView/components/InfoModal/TabButton";
 const StyledHeader = styled.div`
   display: flex;
   height: 40px;
-  border: 2px solid red;
+  
 `;
 function Header() {
   return (

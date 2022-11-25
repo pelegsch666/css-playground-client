@@ -5,7 +5,7 @@ import { isInfoModalOpenState } from "views/GameView/store";
 
 
 const Button = styled.button`
-background-color: aqua;
+background-color: #F73D93;
 `
 
 
