@@ -11,7 +11,7 @@ function getTheStyles(shapeProperties, defaultProperties) {
 	return allProperties;
 }
 
-function Shape({ shapeProperties, defaultProperties, renderingKey }) {
+export default function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 	const [styles, setStyles] = useState({});
 	useEffect(() => {
 		setStyles(getTheStyles(shapeProperties, defaultProperties));
@@ -133,4 +133,4 @@ function Shape({ shapeProperties, defaultProperties, renderingKey }) {
 		}
 	}
 }
-export default Shape;
+

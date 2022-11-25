@@ -5,7 +5,8 @@ import Header from "views/GameView/components/InfoModal/Explanation/Header";
 import Body from "./Body";
 
 
-function Explanation({ propertyName }) {
+
+export default function Explanation({ propertyName }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,4 +18,3 @@ function Explanation({ propertyName }) {
   )
 }
 
-export default Explanation;

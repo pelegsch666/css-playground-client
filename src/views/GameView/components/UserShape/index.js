@@ -6,7 +6,7 @@ import { levelsDataState, currIndexLevelState } from "store";
 import ShapeContainer from "views/GameView/components/ShapeContainer";
 import Shape from "views/GameView/components/Shape";
 
-function UserShape() {
+export default function UserShape() {
   const levelsData = useRecoilValue(levelsDataState);
   const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
   const userShape = useRecoilValue(userShapeState);
@@ -21,4 +21,4 @@ function UserShape() {
   );
 }
 
-export default UserShape;
+

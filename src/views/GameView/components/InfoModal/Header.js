@@ -5,9 +5,9 @@ import TabButton from "views/GameView/components/InfoModal/TabButton";
 const StyledHeader = styled.div`
   display: flex;
   height: 40px;
-  
 `;
-function Header() {
+
+export default function Header() {
   return (
     <StyledHeader>
       <ExitButton />
@@ -16,5 +16,3 @@ function Header() {
     </StyledHeader>
   );
 }
-
-export default Header;

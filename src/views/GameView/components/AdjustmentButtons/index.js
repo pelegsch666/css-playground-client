@@ -3,7 +3,7 @@ import Line from "views/GameView/components/AdjustmentButtons/Line";
 import useChangeUserValues from "views/GameView/hooks/useChangeUserValues"
 
 
-function AdjusmentButtons() {
+export default function AdjusmentButtons() {
     const setUserValues = useChangeUserValues();
     return (
     <>
@@ -17,4 +17,3 @@ function AdjusmentButtons() {
     </>
   );
 }
-export default AdjusmentButtons

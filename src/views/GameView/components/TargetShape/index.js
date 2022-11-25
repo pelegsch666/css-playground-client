@@ -7,7 +7,7 @@ import ShapeContainer from "views/GameView/components/ShapeContainer";
 import Shape from "views/GameView/components/Shape";
 
 
-function TargetShape() {
+export default function TargetShape() {
   const levelsData = useRecoilValue(levelsDataState);
   const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
   const targetShape = useRecoilValue(targetShapeState);
@@ -23,4 +23,4 @@ function TargetShape() {
   );
 }
 
-export default TargetShape;
+

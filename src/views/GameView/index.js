@@ -25,7 +25,7 @@ import { isInfoModalOpenState, isVictoryState } from "views/GameView/store";
 
 import PropertySelector from "views/GameView/components/PropertySelector";
 
-function GameView() {
+export default function GameView() {
   const isVictory = useRecoilValue(isVictoryState);
   const isInfoModalOpen = useRecoilValue(isInfoModalOpenState);
   
@@ -56,4 +56,4 @@ function GameView() {
     </>
   );
 }
-export default GameView;
+

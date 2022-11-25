@@ -9,7 +9,7 @@ const Button = styled.button`
   right: 20px;
 `;
 
-function InfoButton() {
+export default function InfoButton() {
   const [isInfoModalOpen, setInfoModalOpen] =
     useRecoilState(isInfoModalOpenState);
   return (
@@ -23,4 +23,3 @@ function InfoButton() {
   );
 }
 
-export default InfoButton;

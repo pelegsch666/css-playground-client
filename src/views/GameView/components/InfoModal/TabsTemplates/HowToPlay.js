@@ -11,7 +11,7 @@ const Title = styled.h1`
   width: fit-content;
 `;
 
-function HowToPlay() {
+export default function HowToPlay() {
   return (
     <>
       <Wrapper>
@@ -32,4 +32,4 @@ function HowToPlay() {
     </>
   );
 }
-export default HowToPlay;
+

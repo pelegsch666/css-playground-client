@@ -8,10 +8,10 @@ import Header from "views/GameView/components/InfoModal/Header";
 
 
 
-function InfoModal() {
+export default function InfoModal() {
   return <ModalBox>
     <Header/>
    <Body/>
   </ModalBox>;
 }
-export default InfoModal;
+ 
