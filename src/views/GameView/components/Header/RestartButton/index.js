@@ -5,9 +5,7 @@ import { levelsDataState } from "store";
 import levels from "levels";
 
 const RestartButtonStyled = styled.button`
-  position: fixed;
-  left: 20px;
-  top: 20px;
+ 
 `;
 
 export default function RestartButton() {

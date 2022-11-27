@@ -7,9 +7,8 @@ import TargetShape from "views/GameView/components/TargetShape";
 import LevelTitle from "views/GameView/components/LevelTitle";
 import VictoryBlock from "views/GameView/components/VictoryBlock";
 import UserShape from "views/GameView/components/UserShape";
-import InfoButton from "views/GameView/components/InfoModal/InfoButton";
-import InfoModal from "views/GameView/components/InfoModal";
-import RestartButton from "views/GameView/components/RestartButton";
+import Header from "views/GameView/components/Header";
+
 
 import {
   useSetCurrIdxLevel,
@@ -21,13 +20,13 @@ import {
   useSetPropertiesLevelsNames,
 } from "views/GameView/effects";
 
-import { isInfoModalOpenState, isVictoryState } from "views/GameView/store";
+import {  isVictoryState } from "views/GameView/store";
 
 import PropertySelector from "views/GameView/components/PropertySelector";
 
 export default function GameView() {
   const isVictory = useRecoilValue(isVictoryState);
-  const isInfoModalOpen = useRecoilValue(isInfoModalOpenState);
+ 
   
   useSetUserShape();
   useSetTargetShape();
@@ -39,11 +38,10 @@ export default function GameView() {
 
   return (
     <>
-      {isInfoModalOpen && <InfoModal />}
+    
       <StackCol isCentered={true}>
         <LevelTitle />
-        <InfoButton />
-        <RestartButton />
+       <Header/>
         <TargetShape />
         <UserShape />
         <StackRow justifyContent="center" alignItems="center">

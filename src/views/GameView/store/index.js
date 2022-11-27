@@ -42,3 +42,7 @@ export const currPropertyLevelsNameState = atom({
 	key: 'currPropertyLevelsNameState',
 	default: [],
 })
+export const isHeaderOpenState = atom({
+	key: 'isHeaderOpenState',
+	default: false,
+})

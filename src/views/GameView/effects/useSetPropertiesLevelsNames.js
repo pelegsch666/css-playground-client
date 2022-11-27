@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-
 import { levelsDataState, currIndexLevelState } from "store";
 import { currPropertyLevelsNameState } from "views/GameView/store";
-import removeAnItemFromArray from 'helpers/removeAnItemFromArray'
+import removeAnItemFromArray from "helpers/removeAnItemFromArray";
 
 export default function useSetPropertiesLevelsNames() {
   const levels = useRecoilValue(levelsDataState);
@@ -14,20 +13,25 @@ export default function useSetPropertiesLevelsNames() {
   );
 
   useEffect(() => {
-    const propertiesNames = Object.keys(levels[currLevelIndex].userProperties);
-    if (propertiesNames.includes("customProperties")) {
-      const customProperties = Object.keys(
-        levels[currLevelIndex].userProperties.customProperties
+    console.log(levels);
+    if (levels.length !== 0) {
+      const propertiesNames = Object?.keys(
+        levels[currLevelIndex]?.userProperties
       );
 
-      const finalProperties = [
-        ...removeAnItemFromArray("customProperties", propertiesNames),
-        ...customProperties,
-      ];
-      setCurrPropertyLevelsName(finalProperties);
-    } else {
-      setCurrPropertyLevelsName(propertiesNames);
+      if (propertiesNames?.includes("customProperties")) {
+        const customProperties = Object.keys(
+          levels[currLevelIndex].userProperties.customProperties
+        );
+
+        const finalProperties = [
+          ...removeAnItemFromArray("customProperties", propertiesNames),
+          ...customProperties,
+        ];
+        setCurrPropertyLevelsName(finalProperties);
+      } else {
+        setCurrPropertyLevelsName(propertiesNames);
+      }
     }
   }, [currLevelIndex]);
 }
-

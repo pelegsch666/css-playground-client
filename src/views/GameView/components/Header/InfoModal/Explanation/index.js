@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "views/GameView/components/InfoModal/Explanation/Header";
+import Header from "views/GameView/components/Header/InfoModal/Explanation/Header";
 
 import Body from "./Body";
 

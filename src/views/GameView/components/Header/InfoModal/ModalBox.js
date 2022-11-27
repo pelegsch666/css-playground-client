@@ -4,7 +4,7 @@ const ModalBox = styled.div`
   display: flex;
   position: fixed;
   background-color: black;
-  top: 0;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;

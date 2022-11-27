@@ -4,9 +4,7 @@ import { useRecoilState } from "recoil";
 import { isInfoModalOpenState } from "views/GameView/store";
 
 const Button = styled.button`
-  position: fixed;
-  top: 20px;
-  right: 20px;
+
 `;
 
 export default function InfoButton() {

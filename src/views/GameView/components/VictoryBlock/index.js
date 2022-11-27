@@ -1,25 +1,51 @@
-import {useRecoilState} from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 import degObj from "helpers/degObj";
 import { currIndexLevelState } from "store";
 
 import TriangleButton from "views/GameView/components/TriangleButton";
+import levels from "levels";
+import { isVictoryState } from "views/GameView/store";
 
 export default function Victory() {
   const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
-  const navigate = useNavigate()
-  
+  const isVictory = useRecoilValue(isVictoryState);
+
+  const navigate = useNavigate();
+  console.log(currIdxLevel);
+  console.log(isVictory);
   function changeIndexOfLevel() {
-    setCurrIdxLevel(+currIdxLevel + 1);
-    navigate(`/GameView/${+currIdxLevel + 1}`);
+    if (currIdxLevel < levels.length - 1) {
+      setCurrIdxLevel(+currIdxLevel + 1);
+      navigate(`/GameView/${+currIdxLevel + 1}`);
+    }
   }
+function handleReturnToMenuClick(){
+  navigate("/");
+  setCurrIdxLevel(0);
+}
+
+
 
   return (
     <>
-      <h1>Victory!!!!</h1>
-      <h1>press to start the next level</h1>
-      <TriangleButton deg={degObj.RIGHT} onClick={() => changeIndexOfLevel()} />
+      {currIdxLevel < levels.length - 1 && (
+        <>
+          <h1>Victory!!!!</h1>
+          <h1>press to start the next level</h1>
+          <TriangleButton
+            deg={degObj.RIGHT}
+            onClick={() => changeIndexOfLevel()}
+          />
+        </>
+      )}
+      {+currIdxLevel === levels.length - 1 && isVictory && (
+        <>
+          <h1>You Are The Best 🥳</h1>
+        <button onClick={handleReturnToMenuClick}>Retrun To Menu</button>
+        </>
+      )}
     </>
   );
 }
