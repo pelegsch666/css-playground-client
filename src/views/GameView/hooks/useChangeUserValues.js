@@ -44,7 +44,7 @@ function useChangeUserValues() {
 		} else {
 			const { value, items } = newUserShape[currPropIdx][currPropertyTitle];
 			const currIdx = items.indexOf(value);
-			const currProperty = newUserShape[currPropIdx][currPropertyTitle];
+			
 			if (sign === '+') {
 				if (currIdx === items.length - 1) {
 					const newIdx = 0;

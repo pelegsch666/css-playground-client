@@ -1,4 +1,4 @@
-import styled from "styled-components";
+
 
 import { useRecoilState } from "recoil";
 import { isInfoModalOpenState } from "views/GameView/store";

@@ -33,5 +33,5 @@ export default function useSetPropertiesLevelsNames() {
         setCurrPropertyLevelsName(propertiesNames);
       }
     }
-  }, [currLevelIndex]);
+  }, [currLevelIndex,setCurrPropertyLevelsName,levels]);
 }

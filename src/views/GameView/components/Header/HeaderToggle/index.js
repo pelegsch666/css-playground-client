@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isHeaderOpenState, isInfoModalOpenState } from "views/GameView/store";
-import defaultTheme from "theme/defaultTheme";
+
 import StyledButton from "views/GameView/components/Header/StyledButton";
 
 const Button = styled(StyledButton)`
