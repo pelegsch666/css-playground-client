@@ -1,7 +1,7 @@
 import {useRecoilState,useRecoilValue} from "recoil"
 
 import { targetShapeState } from "views/GameView/store";
-import {levelsDataState, currIndexLevelState} from "store"
+import {levelsDataState, currIndexLevelState,useRecoilValue} from "store"
 
 import ShapeContainer from "views/GameView/components/ShapeContainer";
 import Shape from "views/GameView/components/Shape";
@@ -9,7 +9,7 @@ import Shape from "views/GameView/components/Shape";
 
 export default function TargetShape() {
   const levelsData = useRecoilValue(levelsDataState);
-  const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
+  const currIdxLevel = useRecoilValue(currIndexLevelState);
   const targetShape = useRecoilValue(targetShapeState);
   return (
     <ShapeContainer>

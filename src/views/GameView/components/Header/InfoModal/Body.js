@@ -11,5 +11,7 @@ export default function Body() {
       return <HowToPlay />;
     case "Properties Info":
       return <PropertiesInfo />;
+    default:
+      <div></div>;
   }
 }
