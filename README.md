@@ -32,6 +32,9 @@ The game currently has 2 levels:
 
 - Level 1 - Shape It Out (width, height, border-radius)
 - Level 2 - Don't Flex (flex-direction, justify-content, align-items)
+- Level 3 - Box Model-Padding
+- Level 4 - Box Model-Margin
+- Level 5 - Red, Green And Blue(aka RGB)
 
 Levels ideas for the future:
 
@@ -56,19 +59,15 @@ Levels ideas for the future:
 
 ## Features requests
 
-- Add a "restart button" to each level
-- Add a "next level" button to each level
-- Add a "previous level" button to each level
+
+
+
 - Add a "random level" button to each level
-- Add a navigation system to the levels
 - Add CSS snippets to the levels that will update automatically
 - Add a "copy to clipboard" button to the CSS snippets
 - Add option to change the User shape with code
-- Add instructions to all the properties in the levels
-- Add counter to the increment/decrement buttons
 - Add audio FX
 - Add music to the levels
-- Improve the UI styles
 - Add a "time" mode
 
 ---
