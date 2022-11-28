@@ -1,7 +1,7 @@
-import {useRecoilState,useRecoilValue} from "recoil"
+import {useRecoilValue} from "recoil"
 
 import { targetShapeState } from "views/GameView/store";
-import {levelsDataState, currIndexLevelState,useRecoilValue} from "store"
+import {levelsDataState, currIndexLevelState} from "store"
 
 import ShapeContainer from "views/GameView/components/ShapeContainer";
 import Shape from "views/GameView/components/Shape";
