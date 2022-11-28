@@ -13,7 +13,7 @@ export default function useSetPropertiesLevelsNames() {
   );
 
   useEffect(() => {
-    console.log(levels);
+    
     if (levels.length !== 0) {
       const propertiesNames = Object?.keys(
         levels[currLevelIndex]?.userProperties

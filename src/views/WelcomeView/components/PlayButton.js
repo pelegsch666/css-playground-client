@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const PlayButton = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
 	width: 334px;
 	height: 157px;
 	background: #17eb40;

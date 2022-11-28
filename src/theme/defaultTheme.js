@@ -5,6 +5,9 @@ const defaultTheme = {
     deepBlue: "#16003B",
     green: "#17EB40",
     grey: "#413F42",
+    deepGreen: "#003B11",
+    white: "#fff",
+    black: "#000"
   },
   typography: {
     fontSize: {

@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isHeaderOpenState, isInfoModalOpenState } from "views/GameView/store";
+import defaultTheme from "theme/defaultTheme";
+import StyledButton from "views/GameView/components/Header/StyledButton";
 
-const ToggleButton = styled.button``;
+const Button = styled(StyledButton)`
+border-radius: 0;
+`
 
 export default function HeaderToggle() {
   const [isHeaderOpen, setIsHeaderOpen] = useRecoilState(isHeaderOpenState);
@@ -19,8 +23,8 @@ export default function HeaderToggle() {
   }
 
   return (
-    <ToggleButton onClick={toggleHeader}>
-      {isHeaderOpen ? "Close Header" : "Open Header"}
-    </ToggleButton>
+    <Button onClick={toggleHeader}>
+      {isHeaderOpen ? "Close Options" : "Open Options"}
+    </Button>
   );
 }

@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 import { levelsDataState } from "store";
 import levels from "levels";
+import StyledButton from "../StyledButton";
 
-const RestartButtonStyled = styled.button`
- 
-`;
+
 
 export default function RestartButton() {
   const setLevelsData = useSetRecoilState(levelsDataState);
@@ -17,6 +16,6 @@ export default function RestartButton() {
   }
 
   return (
-    <RestartButtonStyled onClick={handleClick}>Restart</RestartButtonStyled>
+    <StyledButton onClick={handleClick}>Restart</StyledButton>
   );
 }

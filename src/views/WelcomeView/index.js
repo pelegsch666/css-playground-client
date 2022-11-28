@@ -9,7 +9,6 @@ import { currIndexLevelState, levelsDataState } from "store";
 
 import StackCol from "components/layout/StackCol";
 
-
 import LevelsDiv from "views/WelcomeView/components/LevelsDiv";
 import PlayButton from "views/WelcomeView/components/PlayButton";
 import StyledH1 from "views/WelcomeView/components/StyledH1";
@@ -91,7 +90,9 @@ export default function WelcomeView() {
           </>
         )}
 
-        <PlayButton onClick={handlePlayClick}>PLAY </PlayButton>
+        <PlayButton onClick={handlePlayClick}>
+          <p>PLAY</p>
+        </PlayButton>
       </StackCol>
     </>
   );

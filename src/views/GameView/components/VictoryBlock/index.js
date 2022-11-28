@@ -7,14 +7,14 @@ import { currIndexLevelState } from "store";
 import TriangleButton from "views/GameView/components/TriangleButton";
 import levels from "levels";
 import { isVictoryState } from "views/GameView/store";
+import StyledButton from "../Header/StyledButton";
 
 export default function Victory() {
   const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
   const isVictory = useRecoilValue(isVictoryState);
 
   const navigate = useNavigate();
-  console.log(currIdxLevel);
-  console.log(isVictory);
+
   function changeIndexOfLevel() {
     if (currIdxLevel < levels.length - 1) {
       setCurrIdxLevel(+currIdxLevel + 1);
@@ -43,7 +43,7 @@ function handleReturnToMenuClick(){
       {+currIdxLevel === levels.length - 1 && isVictory && (
         <>
           <h1>You Are The Best 🥳</h1>
-        <button onClick={handleReturnToMenuClick}>Retrun To Menu</button>
+        <StyledButton onClick={handleReturnToMenuClick}>Retrun To Menu</StyledButton>
         </>
       )}
     </>
