@@ -1,7 +1,7 @@
 import getRandomIntWithGap from 'helpers/getRandomIntWithGap';
 
 const box_model = {
-	levelName: 'Box Model',
+	levelName: 'Box Model-Padding',
 	levelId: 3,
 	renderingKey: 'Box Model',
 	defaultProperties: {
