@@ -91,7 +91,7 @@ export default function WelcomeView() {
         )}
 
         <PlayButton onClick={handlePlayClick}>
-          <p>PLAY</p>
+          PLAY
         </PlayButton>
       </StackCol>
     </>
