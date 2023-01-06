@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { currIndexLevelState } from "store";
 
 import { useSetRecoilState } from "recoil";
-import StyledButton from "views/GameView/components/Header/StyledButton";
+import HeaderAction from "../HeaderAction/HeaderAction";
 
 export default function MenuButton() {
   const navigate = useNavigate();
@@ -13,5 +13,5 @@ export default function MenuButton() {
     setCurrIndexLevevl(0);
   }
 
-  return <StyledButton onClick={handleClick}>Menu </StyledButton>;
+  return <HeaderAction onClick={handleClick}>Menu </HeaderAction>;
 }

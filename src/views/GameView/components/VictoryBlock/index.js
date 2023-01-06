@@ -3,11 +3,29 @@ import { useNavigate } from "react-router-dom";
 
 import degObj from "helpers/degObj";
 import { currIndexLevelState } from "store";
-
+import styled from "styled-components";
 import TriangleButton from "views/GameView/components/TriangleButton";
 import levels from "levels";
 import { isVictoryState } from "views/GameView/store";
 import StyledButton from "../Header/StyledButton";
+
+const StyledVictoryText = styled.p`
+font-size: 1.2rem;
+margin: auto;
+`
+const StyledVictoryTitle = styled.h2`
+font-size: 2rem;
+margin: 0;
+`
+const StyledTextWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+margin: 10px;
+gap: 10px;
+font-family: Arial, Helvetica, sans-serif;
+`
+
 
 export default function Victory() {
   const [currIdxLevel, setCurrIdxLevel] = useRecoilState(currIndexLevelState);
@@ -32,9 +50,11 @@ function handleReturnToMenuClick(){
     <>
       {currIdxLevel < levels.length - 1 && (
         <>
-          <h1>Victory!!!!</h1>
-          <h1>press to start the next level</h1>
-          <TriangleButton
+        <StyledTextWrapper>
+          <StyledVictoryTitle>Victory!</StyledVictoryTitle>
+          <StyledVictoryText>Press the triangle to go to the next level</StyledVictoryText>
+          </StyledTextWrapper>
+         <TriangleButton
             deg={degObj.RIGHT}
             onClick={() => changeIndexOfLevel()}
           />

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-const PropertyName = styled.h2`
+const PropertyName = styled.p`
+	margin: 0;
 	color: black;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: inherit;
 `;
 export default PropertyName;

@@ -19,8 +19,8 @@ function PropertySelector() {
   return (
     <>
       <TriangleButton deg={degObj.LEFT} onClick={() => setUserProperty(-1)} />
-      <PropertyContainer>
-        <PropertyName>{currPropertyTitle}</PropertyName>
+      <PropertyContainer >
+        <PropertyName >{currPropertyTitle}</PropertyName>
         <PropertyValue>{currPropertyValue}</PropertyValue>
       </PropertyContainer>
       <TriangleButton deg={degObj.RIGHT} onClick={() => setUserProperty(1)} />

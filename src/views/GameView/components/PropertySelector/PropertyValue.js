@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const PropertyValue = styled.h4`
+const PropertyValue = styled.p`
+	margin: 0;
 	color: black;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	font-size: 25px;
+	font-size: inherit;
 `;
 export default PropertyValue;

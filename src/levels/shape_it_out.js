@@ -6,6 +6,7 @@ const shape_it_out = {
 	renderingKey: null,
 	defaultProperties: {
 		backgroundColor: '#aaffaa',
+		
 	},
 	targetProperties: {
 		width: {

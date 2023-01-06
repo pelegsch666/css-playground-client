@@ -5,6 +5,7 @@ import {levelsDataState, currIndexLevelState} from "store"
 
 import ShapeContainer from "views/GameView/components/ShapeContainer";
 import Shape from "views/GameView/components/Shape";
+import defaultTheme from 'theme/defaultTheme';
 
 
 export default function TargetShape() {
@@ -12,7 +13,7 @@ export default function TargetShape() {
   const currIdxLevel = useRecoilValue(currIndexLevelState);
   const targetShape = useRecoilValue(targetShapeState);
   return (
-    <ShapeContainer>
+    <ShapeContainer theme={defaultTheme}>
       <Shape
         shapeProperties={targetShape}
         defaultProperties={levelsData[currIdxLevel]?.defaultProperties}

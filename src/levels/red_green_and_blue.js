@@ -1,11 +1,18 @@
 import getRandomIntWithGap from 'helpers/getRandomIntWithGap';
 
-class Rgb {
+export class Rgb {
 	constructor(min, max, gap) {
 		this.min = min;
 		this.max = max;
 		this.gap = gap;
 		this.value = getRandomIntWithGap(this.min, this.max, this.gap);
+	}
+	set changeColorValue(value){
+      this.value =value
+	}
+	static getColorValue(min,max,gap){
+        
+		return getRandomIntWithGap(min, max, gap)
 	}
 }
 

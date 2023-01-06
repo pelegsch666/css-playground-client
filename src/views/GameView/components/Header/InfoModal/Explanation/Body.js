@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 import { getPropertyExplanation } from "helpers";
 
-const BodyContainer = styled.div`
+const BodyExplanationContainer = styled.div`
   background-color: #17013c;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 12px;
 `;
 const SubTitle = styled.h2``;
 const DescriptionContent = styled.p``;
@@ -17,7 +18,7 @@ export default function Body({ isOpen, propertyName }) {
   const { description, links } = getPropertyExplanation(propertyName);
 
   return isOpen ? (
-    <BodyContainer>
+    <BodyExplanationContainer>
       <SubTitle>Description</SubTitle>
       <DescriptionContent>{description}</DescriptionContent>
       <SubTitle>Links</SubTitle>
@@ -26,6 +27,6 @@ export default function Body({ isOpen, propertyName }) {
           {link}
         </Link>
       ))}
-    </BodyContainer>
+    </BodyExplanationContainer>
   ) : null
 }
