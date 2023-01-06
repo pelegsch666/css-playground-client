@@ -10,7 +10,7 @@ const PlayButton = styled.button`
 	border: 6px solid #16003b;
 	box-shadow: 0px 8px 24px rgba(230, 230, 230, 0.15);
 	border-radius: 40px;
-	font-family: Phosphate;
+	font-family: Phosphate,Arial, Helvetica, sans-serif;
 	font-size: 96px;
 `;
 export default PlayButton;
